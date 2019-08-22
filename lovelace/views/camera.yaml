@@ -1,24 +1,37 @@
 title: Camera
 icon: mdi:cctv
 cards:
-  - type: picture-glance
-    title: Front Door
-    entities:
-      - camera.front_door
-    camera_image: camera.front_door
+  - type: custom:surveillance-card
+    thumb_interval: 2
+    update_interval: 0.5
+    cameras:
+      - entity: camera.front_door
+        motion_entity: binary_sensor.front_door_motion
+      - entity: camera.back_yard
+        motion_entity: binary_sensor.ring_front_door_motion
+      - entity: camera.kitchen
+        motion_entity: binary_sensor.kitchen_motion
 
-  - type: picture-entity
-    title: Entree
-    entity: camera.entree_cam
-    camera_image: camera.entree_cam
-    show_info: true
-    tap_action: dialog
-    camera_view: live
+  - type: custom:vertical-stack-in-card
+    cards:     
+      - type: picture-glance
+        title: Front Door
+        entities:
+          - camera.front_door
+        camera_image: camera.front_door
 
-  - type: picture-entity
-    title: Entree
-    entity: camera.kitchen_cam
-    camera_image: camera.entree_cam
-    show_info: true
-    tap_action: dialog
-    camera_view: live
+      - type: picture-entity
+        title: Entree
+        entity: camera.entree_cam
+        camera_image: camera.entree_cam
+        show_info: true
+        tap_action: dialog
+        camera_view: live
+
+      - type: picture-entity
+        title: Entree
+        entity: camera.kitchen_cam
+        camera_image: camera.entree_cam
+        show_info: true
+        tap_action: dialog
+        camera_view: live
