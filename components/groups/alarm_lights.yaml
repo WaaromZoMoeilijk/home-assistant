@@ -1,0 +1,30 @@
+alarm_lights:
+  name: Alarm Lights
+  entities:
+    - light.bathroom
+    - light.bedroom_bled
+    - light.bedroomb1
+    - light.bled
+    - light.closet
+    - light.desk_light
+    - light.dt
+    - light.first_floor
+    - light.hall
+    - light.it_room_light
+    - light.jade
+    - light.jade_main
+    - light.kitchen
+    - light.livingroom_led
+    - light.livingroom_sw
+    - light.night_light_3
+    - light.nowen
+    - light.nowen_main
+    - light.second_hall
+    - light.toilet
+    - switch.alarm_light
+    - switch.bedroom_led
+    - switch.bedroom_light
+    - switch.bedroom_lights
+    - switch.dinner
+    - switch.livingroom_light
+    - switch.bed

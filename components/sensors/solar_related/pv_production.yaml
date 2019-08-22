@@ -1,0 +1,7 @@
+platform: template
+sensors:
+  pv_power_production:
+    friendly_name: 'PV power production'
+    unit_of_measurement: 'W'
+    value_template: >-
+      {{ states("sensor.victron_pv_power") | float | round(3) }}

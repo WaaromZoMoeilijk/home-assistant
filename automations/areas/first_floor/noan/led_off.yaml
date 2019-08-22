@@ -1,0 +1,13 @@
+alias: "[Light off] Noan LED off, 10 minutes"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: timer.noan
+action:
+- service: homeassistant.turn_off
+  data:
+    entity_id:
+      - light.nowen

@@ -1,0 +1,25 @@
+alias: "[Light on] Hallway on when door opens"
+hide_entity: false
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: binary_sensor.front_door_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.stair_motion
+  to: 'on'  
+condition:
+- condition: numeric_state
+  entity_id: sun.sun
+  value_template: '{{ state.attributes.elevation }}'
+  below: 8
+action:
+- service: homeassistant.turn_on
+  data:
+    entity_id: light.hall
+- service: timer.cancel
+  data:
+    entity_id: timer.hall
+- service: timer.start
+  data:
+    entity_id: timer.hall

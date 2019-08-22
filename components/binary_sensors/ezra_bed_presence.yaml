@@ -1,0 +1,7 @@
+platform: mqtt
+state_topic: "bedpresd1/cmnd/POWER2"
+name: 'Ezra Bed Presence'
+#value_template: '{{value_json.Switch2}}'
+payload_on: 'ON'
+payload_off: 'OFF'
+device_class: occupancy

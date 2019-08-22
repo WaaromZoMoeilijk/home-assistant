@@ -1,0 +1,13 @@
+alias: "test audio"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.house
+    to: 'triggered'
+action:
+  - service: media_player.alexa_tts
+    data:
+      entity_id:
+        - media_player.it_room
+      message: “test test test “

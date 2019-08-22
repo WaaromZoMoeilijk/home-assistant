@@ -1,0 +1,18 @@
+alias: "[Kids] Motion @ Jade"
+hide_entity: false
+initial_state: 'off'
+trigger:
+- platform: state
+  entity_id: binary_sensor.jade_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.jade_door
+  to: 'on'
+condition:
+- condition: time
+  after: '21:00:00'
+  before: '07:00:00'
+action:
+  service: notify.telegram
+  data:
+    message: "Motions @ Jade"

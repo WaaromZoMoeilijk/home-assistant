@@ -1,0 +1,2 @@
+grub_reboot: !secret grub_reboot
+

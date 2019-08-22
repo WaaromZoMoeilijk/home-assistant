@@ -1,0 +1,4 @@
+platform: mqtt
+name: "Central Heating Total Start Time"
+state_topic: "centralheating/tele/SENSOR"
+value_template: '{{ value_json["ENERGY"]["TotalStartTime"] }}'

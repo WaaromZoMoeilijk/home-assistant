@@ -1,0 +1,10 @@
+platform: rfxtrx
+automatic_add: true
+signal_repetitions: 2
+devices:
+  0b110000005f39f603010f70:
+    name: Desk Second
+  0b11000d005f39f602010f70:
+    name: House sign
+  0b110010005f39f601010f70:
+    name: Alarm light

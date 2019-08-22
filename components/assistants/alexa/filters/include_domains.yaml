@@ -1,0 +1,7 @@
+include_domains:
+  - light
+  - switch
+  - input_boolean
+  - group
+  - fan
+  - sonos

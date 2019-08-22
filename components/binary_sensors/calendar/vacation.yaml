@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  vacation:
+    friendly_name: "Ezra Vacation"
+    value_template: >-
+      {{ states.calendar.gedeeld_fanny.attributes.message == "Ezra vakantie" }}

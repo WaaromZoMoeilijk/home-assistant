@@ -1,0 +1,13 @@
+alias: "[Light off] Hall light off"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: timer.hall
+action:
+- service: homeassistant.turn_off
+  data:
+    entity_id:
+      - light.hall

@@ -1,0 +1,22 @@
+alias: "[Light off] Livingroom off"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: timer.livingroom
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: device_tracker.salora
+      state: not_home
+    - condition: state
+      entity_id: media_player.sonos_beam
+      state: standby
+action:
+- service: homeassistant.turn_off
+  data:
+    entity_id:
+      - light.livingroom_sw

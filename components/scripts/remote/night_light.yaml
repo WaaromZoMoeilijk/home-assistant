@@ -1,0 +1,44 @@
+night_light_brightness_up:
+  alias: 'Night Light Brightness Up'
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/nightlight/Irsend"
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF700FF"}'
+        qos: 2
+
+night_light_brightness_down:
+  alias: 'Night Light Brightness Down'
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/nightlight/Irsend"
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF7807F"}'
+        qos: 2
+
+night_light_white_toggle:
+  alias: 'Night Light Brightness White Toggle'
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/nightlight/Irsend"
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF740BF"}'
+        qos: 2
+
+night_light_color_set:
+  alias: 'Night Light Brightness Color Set'
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/nightlight/Irsend"
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF710EF"}'
+        qos: 2
+
+night_light_alarm:
+  alias: 'Night Light Brightness Alarm'
+  sequence:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/nightlight/Irsend"
+        payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF7C837"}'
+        qos: 2

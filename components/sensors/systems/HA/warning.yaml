@@ -1,0 +1,3 @@
+platform: command_line
+name: Warning
+command: 'cat /config/bash/grep_output/warning.txt'

@@ -1,0 +1,27 @@
+platform: mqtt
+name: "Fan"
+command_topic: "sonoff_MBR_fan/cmnd/FanSpeed"
+speed_command_topic: "sonoff_MBR_fan/cmnd/FanSpeed"
+state_topic: "sonoff_MBR_fan/stat/RESULT"
+speed_state_topic: "sonoff_MBR_fan/stat/RESULT"
+state_value_template: >
+  {% if value_json.FanSpeed is defined %}
+    {% if value_json.FanSpeed == 0 -%}0{%- elif value_json.FanSpeed > 0 -%}4{%- endif %}
+  {% else %}
+    {% if states.fan.fan.state == 'off' -%}0{%- elif states.fan.fan.state == 'on' -%}4{%- endif %}
+  {% endif %}
+speed_value_template: "{{ value_json.FanSpeed }}"
+availability_topic: sonoff_MBR_fan/tele/LWT
+payload_off: "0"
+payload_on: "1"
+payload_low_speed: "1"
+payload_medium_speed: "2"
+payload_high_speed: "3"
+payload_available: Online
+payload_not_available: Offline
+qos: 2
+speeds:
+  - off
+  - low
+  - medium
+  - high

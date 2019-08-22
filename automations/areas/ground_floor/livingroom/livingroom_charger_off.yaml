@@ -1,0 +1,16 @@
+alias: '[Charger] Livingroom off'
+hide_entity: false
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: sensor.geheime_dienst_battery_state
+    to: 'Full'
+condition:
+  - condition: state
+    entity_id: device_tracker.ezras_ipad
+    state: 'home'
+action:
+  - service: switch.turn_off
+    data:
+      entity_id:
+        - switch.livingroom_charger

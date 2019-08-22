@@ -1,0 +1,167 @@
+title: First Floor
+icon: mdi:format-vertical-align-center
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:      
+      - type: entities
+        title: Ezra
+        show_header_toggle: false
+        entities:     
+          - type: switch
+            entity: switch.bedroom_charger
+          - type: custom:custom-fan-card
+            entity: fan.fan
+          - type: switch
+            entity: switch.bedroom_light
+            toggle: true
+          - type: custom:slider-entity-row
+            entity: light.bled
+            toggle: true
+          - type: 'custom:button-entity-row'
+            buttons:
+              - entity: scene.bedroom_day
+              - entity: scene.bedroom_day
+                icon: 'mdi:brightness-5'
+                style:
+                  - color: white
+              - entity: scene.bedroom_night
+                icon: 'mdi:brightness-3'
+                style:
+                  - color: red
+              - entity: scene.bedroom_day             
+          - type: switch
+            entity: input_boolean.curtain_ezra
+          - type: sensor
+            entity: binary_sensor.ezra_door
+          - type: sensor
+            entity: binary_sensor.ezra_window_1
+          - type: sensor
+            entity: binary_sensor.ezra_window_2
+
+          - type: sensor
+            entity: binary_sensor.ezra_bed_presence  
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.bedroom_light_dht11_temperature
+            hour24: true          
+            height: 50
+            line_width: 2
+            font_size: 70
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              extrema: true
+              fill: true    
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.bedroom_light_dht11_humidity
+              - sensor.ezra_mold_indicator
+            hour24: true          
+            height: 50
+            line_width: 2
+            font_size: 70
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              extrema: true
+              fill: true   
+
+      - type: entities
+        show_header_toggle: false
+        entities:     
+          - type: section
+            label: Covers
+
+          - entity: input_boolean.somfy_upstairs
+          - entity: cover.somfy_upstairs
+
+          - type: section
+            label: Jade
+
+          - type: custom:slider-entity-row
+            entity: light.jade
+            toggle: true
+          - type: light
+            entity: light.jade_main
+          - type: sensor
+            entity: binary_sensor.jade_motion
+          - type: sensor
+            entity: binary_sensor.jade_door
+          - type: sensor
+            entity: binary_sensor.jade_window
+          - type: timer
+            entity: timer.jade
+
+      - type: entities
+        show_header_toggle: false
+        entities:           
+          - type: section
+            label: Noan
+
+          - type: light
+            entity: light.nowen
+          - type: light
+            entity: light.nowen_main
+          - type: sensor
+            entity: binary_sensor.noan_motion
+          - type: sensor
+            entity: binary_sensor.noan_door
+          - type: sensor
+            entity: binary_sensor.noan_window
+          - type: timer
+            entity: timer.noan     
+
+          - type: section
+            label: Bathroom
+
+          - type: light
+            entity: light.bathroom
+          - type: sensor
+            entity: binary_sensor.bathroom_door
+          - type: sensor
+            entity: binary_sensor.bathroom
+          - type: timer
+            entity: timer.bathroom      
+
+          - type: section
+            label: First floor
+
+          - type: custom:slider-entity-row
+            entity: light.night_light_3
+            toggle: true
+          - type: light
+            entity: light.first_floor
+
+          - type: section
+            label: Motion
+
+          - type: sensor
+            entity: binary_sensor.first_floor_motion
+          - type: sensor
+            entity: binary_sensor.overloop_motion
+          - type: sensor
+            entity: binary_sensor.stair_motion
+          - type: timer
+            entity: timer.nightlight        
+
+          - type: section
+            label: Media
+
+          - type: custom:mini-media-player
+            entity: media_player.livingroom
+            name: First floor Echo
+            artwork: cover
+            power_color: true
+            hide_volume: false
+            show_progress: true
+          - type: custom:mini-media-player
+            entity: media_player.bedroom
+            name: Bedroom Echo
+            artwork: cover
+            power_color: true
+            hide_volume: false
+            show_progress: true
+

@@ -1,0 +1,12 @@
+alias: 'Update Available Notifications'
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: updater.updater
+action:
+  - service: notify.notify
+    data:
+      message: '[Update] for Home Assistant is available.'
+  - service: notify.telegram
+    data:
+      message: '[Update] for Home Assistant is available.'

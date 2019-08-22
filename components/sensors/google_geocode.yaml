@@ -1,0 +1,5 @@
+platform: google_geocode
+name: Ezra location
+origin: device_tracker.ezras_iphone
+options: 'formatted_address'
+api_key: !secret geocode_api

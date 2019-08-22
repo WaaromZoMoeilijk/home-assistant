@@ -1,0 +1,13 @@
+alias: "[Light off] Bathroom off"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: timer.bathroom
+action:
+- service: homeassistant.turn_off
+  data:
+    entity_id:
+      - light.bathroom

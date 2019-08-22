@@ -1,0 +1,14 @@
+alias: '[Alarm] Disarmed Notify'
+hide_entity: false
+initial_state: 'off'
+trigger:
+- platform: state
+  entity_id: alarm_control_panel.house
+  to: 'disarmed'
+action:
+  - service: notify.notify
+    data:
+      message: "[Alarm] Disarmed"
+  - service: notify.telegram
+    data:
+      message: "[Alarm] Disarmed"

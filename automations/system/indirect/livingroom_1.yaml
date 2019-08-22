@@ -1,0 +1,11 @@
+alias: Indirect Livingroom 1/2
+hide_entity: true
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: light.livingroom_sw
+  from: 'off'
+  to: 'on'
+action:
+  - service: homeassistant.turn_on
+    entity_id: switch.livingroom_light, light.livingroom_led

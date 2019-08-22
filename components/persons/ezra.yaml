@@ -1,0 +1,5 @@
+name: Ezra
+id: ezra
+device_trackers:
+      - device_tracker.ezras_iphone
+      - device_tracker.geheime_dienst        

@@ -1,0 +1,11 @@
+platform: haveibeenpwned
+api_key: !secret api_key_haveibeenpwnd
+email:
+- !secret haveibeenpwnd1
+- !secret haveibeenpwnd2
+- !secret haveibeenpwnd3
+- !secret haveibeenpwnd4
+- !secret haveibeenpwnd5
+- !secret haveibeenpwnd6
+- !secret haveibeenpwnd7
+- !secret haveibeenpwnd8  

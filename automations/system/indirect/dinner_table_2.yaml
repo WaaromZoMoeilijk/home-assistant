@@ -1,0 +1,11 @@
+alias: Indirect Dinner Table 2/2
+hide_entity: true
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: light.dt
+  from: 'on'
+  to: 'off'
+action:
+  - service: homeassistant.turn_off
+    entity_id: switch.dinner

@@ -1,0 +1,3 @@
+platform: ical
+name: "Afvalkalender"
+url: !secret afvalkalender

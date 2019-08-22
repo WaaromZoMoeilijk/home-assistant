@@ -1,0 +1,20 @@
+alias: '[Alarm Clock] Turn off devices when alarm is turned on'
+initial_state: 'on'
+hide_entity: False
+trigger:
+- platform: state
+  entity_id: input_boolean.alarm_clock_status
+  to: 'on'
+condition:
+  - condition: state
+    entity_id: person.ezra
+    state: 'home'
+action:
+- service: homeassistant.turn_off
+  entity_id: group.switch_off_devices
+- service: homeassistant.turn_on
+  entity_id: switch.bedroom_charger
+- service: alarm_control_panel.alarm_arm_home
+  entity_id: alarm_control_panel.house
+  data:
+    code: !secret alarm

@@ -1,0 +1,17 @@
+yearly_power_offpeak:
+  source: sensor.power_consumption_low
+  cycle: yearly
+  net_consumption: true
+yearly_power_peak:
+  source: sensor.power_consumption_normal
+  cycle: yearly
+  net_consumption: true
+yearly_gas:
+  source: sensor.gas_consumption
+  cycle: yearly
+yearly_power_production_offpeak:
+  source: sensor.power_production_low
+  cycle: yearly
+yearly_power_production_peak:
+  source: sensor.power_production_normal
+  cycle: yearly

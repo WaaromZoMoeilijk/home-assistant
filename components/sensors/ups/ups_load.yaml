@@ -1,0 +1,3 @@
+platform: file
+name: UPS Load
+file_path: /config/www/freenas/ups_load.txt

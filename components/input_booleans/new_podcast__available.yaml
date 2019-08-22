@@ -1,0 +1,4 @@
+new_podcast_available:
+  name: New Podcast Avaiable
+  initial: off
+  icon: mdi:podcast

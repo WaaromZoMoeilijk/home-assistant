@@ -1,0 +1,11 @@
+alias: '[Alarm] Turn off lights when armed away'
+hide_entity: false
+initial_state: 'off'
+trigger:
+  platform: state
+  entity_id: alarm_control_panel.house
+  to: 'armed_away'
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id: group.switch_off_devices_all

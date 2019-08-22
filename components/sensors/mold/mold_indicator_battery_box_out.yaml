@@ -1,0 +1,6 @@
+platform: mold_indicator
+name: Second floor mold indicator
+indoor_temp_sensor: sensor.victron_battery_am2301_02_temperature
+indoor_humidity_sensor: sensor.victron_battery_am2301_02_humidity
+outdoor_temp_sensor: sensor.dark_sky_temperature
+calibration_factor: 1.5

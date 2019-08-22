@@ -1,0 +1,15 @@
+alias: '[Charger] Bedroom off'
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: time
+  at: '05:30:00'
+condition:
+  condition: numeric_state
+  entity_id: sensor.geheime_dienst_battery_level
+  above: 90
+action:
+  - service: switch.turn_off
+    data:
+      entity_id:
+        - switch.bedroom_charger

@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Fridge Power"
+state_topic: "tele/fridge/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

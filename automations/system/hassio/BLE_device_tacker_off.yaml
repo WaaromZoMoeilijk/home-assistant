@@ -1,0 +1,13 @@
+alias: Ezra [BLE] device tracker Off
+initial_state: 'on'
+hide_entity: true
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.ezra_occupancy_confidence_ble
+    below: 10
+action:
+  - service: device_tracker.see
+    data:
+      dev_id: geheime_dienst
+      location_name: not_home
+      source_type: bluetooth

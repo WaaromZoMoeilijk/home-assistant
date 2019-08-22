@@ -1,0 +1,5 @@
+# This file loads up my switches
+#
+# https://www.home-assistant.io/components/switch/
+#
+switch: !include_dir_list /config/components/switches

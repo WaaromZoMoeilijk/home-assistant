@@ -1,0 +1,4 @@
+platform: mqtt
+state_topic: 'monitor/alarmble/iphone/rssi'
+name: 'Ground floor BLE RSSI raw'
+unit_of_measurement: 'dBm'

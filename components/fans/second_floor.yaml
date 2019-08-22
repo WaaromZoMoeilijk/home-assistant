@@ -1,0 +1,11 @@
+platform: template
+fans:
+  second_floor_fan:
+    friendly_name: "Second Floor Fan"
+    value_template: "{{ states('switch.ventilator_second_floor') }}"
+    turn_on:
+      service: homeassistant.turn_on
+      entity_id: switch.ventilator_second_floor
+    turn_off:
+      service: homeassistant.turn_off
+      entity_id: switch.ventilator_second_floor

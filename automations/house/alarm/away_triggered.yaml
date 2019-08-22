@@ -1,0 +1,55 @@
+alias: "[Alarm] Away Triggered Siren/notify"
+hide_entity: false
+initial_state: 'off'
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.house
+    to: 'triggered'
+action:
+  - service: light.turn_on
+    data:
+      entity_id: group.all_lights
+    # Brightness to 100%
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/bedroomb1/Dimmer"
+      payload: "100"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/bedroomb2/Dimmer"
+      payload: "100"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/bedroomled/Dimmer"
+      payload: "100"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/nightlight/Dimmer"
+      payload: "100"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/jade/Dimmer"
+      payload: "100"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/livingroomled/Dimmer"
+      payload: "100"
+      qos: 2
+    # Siren
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/rfbridge/RfKey1"
+      payload: ""
+      qos: 2
+    # Notify
+  - service: notify.notify
+    data:
+      message: "[Alarm] The alarm has been triggered, siren is on"
+  - service: notify.telegram
+    data:
+      message: "[Alarm] The alarm has been triggered, siren is on"

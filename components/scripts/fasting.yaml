@@ -1,0 +1,8 @@
+set_date_fasting:
+  alias: 'Start fasting fatty!'
+  sequence:
+    - service: input_datetime.set_datetime
+      data_template:
+        entity_id: input_datetime.fasting
+        date: '{{ now().strftime("%Y-%m-%d") }}'
+        time: '{{ now().strftime("%X") }}'

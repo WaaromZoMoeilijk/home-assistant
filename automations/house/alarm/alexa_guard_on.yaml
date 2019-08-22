@@ -1,0 +1,10 @@
+alias: '[Alarm] Alexa guard on'
+hide_entity: false
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: alarm_control_panel.house
+  to: 'armed_away'
+action:
+- service: alarm_control_panel.alarm_arm_away
+  entity_id: alarm_control_panel.alexa_guard_6fd20

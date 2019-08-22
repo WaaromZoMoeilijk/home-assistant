@@ -1,0 +1,4 @@
+platform: mqtt
+state_topic: 'monitor/kitchenble/iphone/rssi'
+name: 'Kitchen BLE RSSI raw'
+unit_of_measurement: 'dBm'

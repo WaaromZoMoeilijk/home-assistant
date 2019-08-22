@@ -1,0 +1,4 @@
+grub_reboot:
+  name: Reboot to Windows
+  initial: off
+  icon: mdi:windows

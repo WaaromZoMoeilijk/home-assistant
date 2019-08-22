@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Central Heating Power"
+state_topic: "centralheating/tele/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

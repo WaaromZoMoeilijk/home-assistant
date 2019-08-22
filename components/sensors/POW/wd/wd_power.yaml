@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Washer and Dryer Power"
+state_topic: "tele/washerdryer/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

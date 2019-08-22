@@ -1,0 +1,17 @@
+hourly_power_offpeak:
+  source: sensor.power_consumption_low
+  cycle: hourly
+  net_consumption: true
+hourly_power_peak:
+  source: sensor.power_consumption_normal
+  cycle: hourly
+  net_consumption: true
+hourly_gas:
+  source: sensor.gas_consumption
+  cycle: hourly
+hourly_power_production_offpeak:
+  source: sensor.power_production_low
+  cycle: hourly
+hourly_power_production_peak:
+  source: sensor.power_production_normal
+  cycle: hourly

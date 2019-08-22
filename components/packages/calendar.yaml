@@ -1,0 +1,1 @@
+calendar: !include_dir_list /config/components/calendars

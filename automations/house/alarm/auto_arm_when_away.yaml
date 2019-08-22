@@ -1,0 +1,17 @@
+alias: '[Alarm] Auto Arm when away'
+hide_entity: false
+initial_state: 'off'
+trigger:
+  - platform: state
+    entity_id: person.ezra
+    from: home
+    to: not_home
+condition:
+  - condition: state
+    entity_id: alarm_control_panel.house
+    state: 'disarmed'
+action:
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.house
+    data:
+      code: !secret alarm

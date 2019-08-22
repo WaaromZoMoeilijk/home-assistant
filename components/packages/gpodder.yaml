@@ -1,0 +1,7 @@
+gpodder:
+  username: !secret gpodder_user
+  password: !secret gpodder_pass
+  sensor:
+    - enabled: true
+      name: 'HA Podcasts'
+      device: homeassistant

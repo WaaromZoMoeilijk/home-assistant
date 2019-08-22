@@ -1,0 +1,154 @@
+title: Home
+icon: mdi:format-vertical-align-bottom
+cards:
+  - type: entities
+    title: Ground Floor
+    show_header_toggle: true
+    entities:
+      - type: section
+        label: Switches & Lights
+      - type: light
+        entity: light.kitchen
+      - type: light
+        entity: light.livingroom_sw
+      - type: light
+        entity: light.closet
+      - type: light
+        entity: light.dt
+      - type: light
+        entity: light.hall
+      - type: light
+        entity: light.toilet
+      - type: fan
+        entity: light.toilet_fan
+      - type: switch
+        entity: switch.livingroom_charger
+      - type: custom:slider-entity-row
+        entity: light.livingroom_led
+        toggle: true
+      - type: switch
+        entity: switch.house_sign
+
+      - type: section
+        label: Covers
+
+      - entity: input_boolean.somfy_downstairs
+      - entity: cover.somfy_downstairs
+
+      - type: section
+        label: Curtains
+
+      - entity: input_boolean.curtain_downstairs
+
+      - type: section
+        label: Timers
+      
+      - type: timer
+        entity: timer.livingroom  
+      - type: timer
+        entity: timer.kitchen
+      - type: timer
+        entity: timer.toilet        
+
+      - type: section
+        label: Alarm
+
+      - type: sensor
+        entity: binary_sensor.siren
+      - type: switch
+        entity: switch.alarm_light
+      - type: sensor
+        name: Alarm
+        entity: alarm_control_panel.house
+      - type: sensor
+        entity: alarm_control_panel.alexa_guard_6fd20        
+
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: custom:mini-graph-card
+        entities: 
+          - sensor.livingroom_temperature
+          - sensor.dark_sky_temperature
+        hour24: true          
+        height: 50
+        line_width: 2
+        font_size: 70
+        hours_to_show: 168
+        points_per_hour: 1
+        show:
+          extrema: true
+          fill: true      
+
+      - type: section
+        label: Doors
+
+      - type: sensor
+        entity: binary_sensor.back_door
+      - type: sensor
+        entity: binary_sensor.kast_door
+      - type: sensor
+        entity: binary_sensor.livingroom_door
+      - type: sensor
+        entity: binary_sensor.front_door
+
+      - type: section
+        label: Windows
+
+      - type: sensor
+        entity: binary_sensor.window_livingroom
+
+      - type: section
+        label: Motion
+
+      - type: sensor
+        entity: binary_sensor.front_door_motion
+      - type: sensor
+        entity: binary_sensor.kitchen_motion
+      - type: sensor
+        entity: binary_sensor.living_motion
+
+      - type: section
+        label: Leakage
+
+      - type: sensor
+        entity: binary_sensor.main_tap_leak
+      - type: sensor
+        entity: binary_sensor.kitchen_leak
+      - type: sensor
+        entity: binary_sensor.fridge_leak
+
+      - type: section
+        label: Media
+
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        name: Spotify Player
+        artwork: cover
+        power_color: true
+        hide_volume: false
+        show_progress: true
+
+      - type: custom:mini-media-player
+        entity: media_player.sonos_beam_2
+        name: Sonos
+        artwork: cover
+        power_color: true
+        hide_volume: false
+        show_progress: true
+
+      - type: custom:mini-media-player
+        entity: media_player.woonkamer
+        name: Chromecast
+        artwork: cover
+        power_color: true
+        hide_volume: false
+        show_progress: true
+
+      - type: custom:mini-media-player
+        entity: media_player.kitchen
+        name: Kitchen Echo
+        artwork: cover
+        power_color: true
+        hide_volume: false
+        show_progress: true

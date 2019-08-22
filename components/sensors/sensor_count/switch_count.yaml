@@ -1,0 +1,13 @@
+platform: template
+sensors:
+  switch_count:
+    friendly_name: "Number of Switches"
+    value_template: >
+      {%- set domains = ['switch'] -%}
+      {%- for domain in domains -%}
+        {%- for item in states[domain] -%}
+          {% if loop.first %}
+            {{loop.length}}
+          {% endif %}
+        {%- endfor -%}
+      {%- endfor -%}

@@ -1,0 +1,16 @@
+alias: "[Snapshot] Snapshot at 3 AM"
+initial_state: on
+hide_entity: false
+trigger:
+  platform: time
+  at: '03:00:00'
+action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+      password: !secret hassio_backup_pass
+  - delay: 02:00:00
+  - service: shell_command.delete_old_snapshots
+  - delay: 00:00:30
+  - service: shell_command.snapshot_reload
+ 

@@ -1,0 +1,4 @@
+host_shutdown:
+  alias: "Host Shutdown"
+  sequence:
+    - service: hassio.host_shutdown

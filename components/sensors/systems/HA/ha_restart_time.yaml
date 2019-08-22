@@ -1,0 +1,5 @@
+platform: command_line
+name: "HA Restart Time"
+command: "/bin/cat /config/home-assistant.log | /bin/grep 'Home Assistant initialized in' | /usr/bin/awk '{print $10}' | /bin/sed 's/[^0-9.]//g'"
+scan_interval: 60
+unit_of_measurement: "sec"

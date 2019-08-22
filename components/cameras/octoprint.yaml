@@ -1,0 +1,4 @@
+platform: mjpeg
+name: OctoPrint
+still_image_url: !secret octoprint_cam
+mjpeg_url: !secret octoprint_com_stream

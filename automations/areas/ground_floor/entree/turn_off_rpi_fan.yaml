@@ -1,0 +1,19 @@
+alias: "[RPI] Turn off FAN below 42 degree"
+initial_state: 'on'
+trigger:
+- platform: numeric_state
+  entity_id: sensor.pitft_temperature
+  below: '42'
+condition:
+  - condition: state
+    entity_id: input_boolean.rpi_fan
+    state: 'on'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "rfbridge/cmnd/RfKey4"
+      payload: ""
+      qos: 2
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.rpi_fan

@@ -1,0 +1,4 @@
+platform: command_line
+command: !secret octoprint_temp_cpu
+name: OctoPrint temperature CPU
+unit_of_measurement: "degree"

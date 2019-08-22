@@ -1,0 +1,7 @@
+name: bedroom_day
+entities:
+  light.bled:
+    state: true
+    xy_color: [0.323, 0.329]
+    color_temp: 500
+    brightness: 255

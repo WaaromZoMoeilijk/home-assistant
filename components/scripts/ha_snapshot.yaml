@@ -1,0 +1,5 @@
+backup_now:
+  alias: New Snapshot
+  sequence:
+    service: automation.trigger
+    entity_id: automation.snapshot_snapshot_at_3_am

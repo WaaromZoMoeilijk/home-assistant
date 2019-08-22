@@ -1,0 +1,4 @@
+platform: mqtt
+name: "Washer and Dryer Total Start Time"
+state_topic: "tele/washerdryer/SENSOR"
+value_template: '{{ value_json["ENERGY"]["TotalStartTime"] }}'

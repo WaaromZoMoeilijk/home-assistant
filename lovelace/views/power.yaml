@@ -1,0 +1,292 @@
+title: Power
+icon: mdi:solar-power
+cards:
+  - type: vertical-stack
+    cards:
+      - type: custom:power-wheel-card
+        title_power: "Power distribution"
+        title_energy: "Energy distribution"
+        title_money: "Energy costs/savings"
+        solar_energy_entity: sensor.victron_pv_energy
+        solar_power_entity: sensor.pv_power_production
+        grid_power_consumption_entity: sensor.grid_power_consumption
+        grid_power_production_entity: sensor.grid_power_production
+        grid_energy_consumption_entity: sensor.daily_energy_consumption
+        grid_energy_production_entity: sensor.daily_energy_production
+        energy_consumption_rate: 0.22
+        energy_production_rate: 0.20
+        money_unit: "€"
+        solar_icon: "mdi:white-balance-sunny"
+        grid_icon: "mdi:transmission-tower"
+        home_icon: "mdi:home-assistant"
+        power_decimals: 3
+        energy_decimals: 3
+        money_decimals: 2
+        color_icons: true
+        consuming_color: "#dd5500"
+        producing_color: "#33ff33"
+        initial_auto_toggle_view: false
+
+      - type: custom:bar-card
+        align: split
+        show_icon: true
+        padding: 4px
+        columns: 2
+        card_style: 
+        border-radius: 5px
+        entities:
+          - entity: sensor.ups_load
+            title: UPS Load
+            max: 100
+          - entity: sensor.ups_charge
+            title: UPS Charge
+            max: 100
+
+      - type: iframe
+        url: !secret victron_url
+        title: Victron
+        aspect_ratio: 175%
+
+  - type: custom:vertical-stack-in-card
+    cards:    
+      - type: entities
+        title: Utility Meter
+        show_header_toggle: false
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Utility Meter hourly
+            items:
+              - sensor.hourly_power_production_offpeak
+              - sensor.hourly_power_production_peak
+              - sensor.hourly_power_offpeak
+              - sensor.hourly_power_peak
+              - sensor.hourly_gas
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Utility Meter Daily
+            items:
+              - sensor.daily_power_production_offpeak
+              - sensor.daily_power_production_peak
+              - sensor.daily_energy_production
+              - sensor.daily_power_offpeak
+              - sensor.daily_power_peak
+              - sensor.daily_energy_consumption
+              - sensor.daily_gas
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Utility Meter Weekly
+            items:
+              - sensor.weekly_power_production_offpeak
+              - sensor.weekly_power_production_peak
+              - sensor.weekly_power_offpeak
+              - sensor.weekly_power_peak
+              - sensor.weekly_gas
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Utility Meter Monthly
+            items:
+              - sensor.monthly_power_production_offpeak
+              - sensor.monthly_power_production_peak
+              - sensor.monthly_power_offpeak
+              - sensor.monthly_power_peak
+              - sensor.monthly_gas
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Utility Meter Yearly
+            items:
+              - sensor.yearly_power_production_peak
+              - sensor.yearly_power_production_offpeak
+              - sensor.yearly_power_peak
+              - sensor.yearly_power_offpeak
+              - sensor.yearly_gas
+
+      - type: entities
+        title: DSMR
+        show_header_toggle: false
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Power Consumption
+            items:
+              - sensor.power_consumption
+              - sensor.power_consumption_low
+              - sensor.power_consumption_normal
+              - sensor.power_consumption_phase_l1
+              - sensor.power_consumption_phase_l2
+              - sensor.power_consumption_phase_l3
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Power Production
+            items:
+              - sensor.power_production
+              - sensor.power_production_low
+              - sensor.power_production_normal
+              - sensor.power_production_phase_l1
+              - sensor.power_production_phase_l2
+              - sensor.power_production_phase_l3
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Misc
+            items:
+              - sensor.power_tariff
+              - sensor.long_power_failure_count
+              - sensor.voltage_sags_phase_l1
+              - sensor.voltage_sags_phase_l2
+              - sensor.voltage_sags_phase_l3
+              - sensor.voltage_swells_phase_l1
+              - sensor.voltage_swells_phase_l2
+              - sensor.voltage_swells_phase_l3
+              - sensor.voltage_phase_l1
+              - sensor.voltage_phase_l2
+              - sensor.voltage_phase_l3
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Gas
+            items:
+              - sensor.gas_consumption
+              - sensor.hourly_gas_consumption
+              - sensor.daily_gas
+              - sensor.weekly_gas
+              - sensor.monthly_gas
+              - sensor.yearly_gas
+
+      - type: entities
+        title: Sonoff POW
+        show_header_toggle: false
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Fridge
+            items:
+              - sensor.fridge_power
+              - sensor.fridge_energy
+              - sensor.fridge_current
+              - sensor.fridge_voltage
+              - sensor.fridge_total_consumption
+              - sensor.fridge_total_start_time
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Datacentre
+            items:
+              - sensor.it_power
+              - sensor.it_energy
+              - sensor.it_current
+              - sensor.it_voltage
+              - sensor.it_total_consumption
+              - sensor.it_total_start_time
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Central Heating
+            items:
+              - sensor.central_heating_power
+              - sensor.central_heating_energy
+              - sensor.central_heating_current
+              - sensor.central_heating_voltage
+              - sensor.central_heating_total_consumption
+              - sensor.central_heating_total_start_time
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Washer & Dryer
+            items:
+              - sensor.washer_and_dryer_power
+              - sensor.washer_and_dryer_energy
+              - sensor.washer_and_dryer_current
+              - sensor.washer_and_dryer_voltage
+              - sensor.washer_and_dryer_total_consumption
+              - sensor.washer_and_dryer_total_start_time
+
+      - type: entities
+        title: Victron
+        show_header_toggle: false
+        entities:
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Victron Battery
+            items:
+              - sensor.victron_battery_current
+              - sensor.victron_battery_power
+              - sensor.victron_battery_voltage
+              - sensor.victron_battery_soc
+              - sensor.victron_battery_time_to_go
+              - sensor.victron_battery_time_since_last_full_charge
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Victron PV
+            items:
+              - sensor.victron_pv_current
+              - sensor.pv_power_production
+              - sensor.victron_pv_energy
+              - sensor.victron_total_yield
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Victron AC
+            items:
+              - sensor.victron_ac_loads_current
+              - sensor.victron_ac_loads_power
+              - sensor.victron_grid_power
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
+              label: Victron
+            items:
+              - sensor.victron_vebus_charge_discharge_current
+              - sensor.victron_vebus_charge_discharge_power
+              - sensor.victron_state
+
+  - type: custom:vertical-stack-in-card
+    cards:    
+    - type: custom:mini-graph-card
+      name: 'Power production and consumption'
+      icon: mdi:leaf
+      entities:
+        - sensor.power_consumption
+        - sensor.power_production
+      show:
+        graph: bar
+
+    - type: custom:mini-graph-card
+      name: 'Sonoff POW'
+      entities:
+        - sensor.it_power
+        - sensor.fridge_power
+        - sensor.central_heating_power
+        - sensor.washer_and_dryer_power
+      show:
+        graph: bar
+
+    - type: custom:mini-graph-card
+      name: 'Gas consumption'
+      entities:
+        - sensor.hourly_gas_consumption
+      show:
+        graph: bar

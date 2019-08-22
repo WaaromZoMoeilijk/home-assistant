@@ -1,0 +1,20 @@
+alarm_clock_awake_pushed:
+  alias: 'Alarm Clock Awake'
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >-
+          {%- if states.binary_sensor.workday_sensor.state == 'on' -%}
+            script.morning_lights_weekday
+          {%- else -%}
+            script.morning_lights_weekend
+          {%- endif -%}
+    - service: notify.ios_ezras_iphone
+      data:
+        title: "Alarm Clock"
+        message: "Time To Wake Up!"
+        data:
+          push:
+            sound: "US-EN-Alexa-Good-Morning.wav"
+            badge: 0
+            category: alarmclock

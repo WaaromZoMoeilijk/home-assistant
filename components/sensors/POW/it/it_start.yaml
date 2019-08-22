@@ -1,0 +1,4 @@
+platform: mqtt
+name: "IT Total Start Time"
+state_topic: "itpow/tele/SENSOR"
+value_template: '{{ value_json["ENERGY"]["TotalStartTime"] }}'

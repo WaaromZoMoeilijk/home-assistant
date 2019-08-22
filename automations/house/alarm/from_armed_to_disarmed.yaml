@@ -1,0 +1,18 @@
+alias: "[Alarm] From triggered to disarmed"
+initial_state: 'off'
+trigger:
+  - platform: state
+    entity_id: alarm_control_panel.house
+    to: 'disarmed'
+    from: 'triggered'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/rfbridge/RfKey2"
+      payload: ""
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "cmnd/rfbridge/RfKey2"
+      payload: ""
+      qos: 2

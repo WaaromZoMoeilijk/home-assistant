@@ -1,0 +1,100 @@
+# Example .gitignore file for your config dir.
+# A * ensures that everything will be ignored.
+
+############ Include
+# Files
+
+!*.yaml
+!.gitignore
+!*.py 
+!*.json 
+!components/packages/alexa_media.yaml
+
+# Folders
+
+!automations
+!components
+!custom_components
+!custom_components/*
+!lovelace
+!lovelace/*
+!lovelace/resources
+!/www/community
+
+############# Ignore 
+# Folders
+
+.storage
+.cloud
+.google.token
+.vscode
+.ssh
+bash
+deps
+node-red
+/resources
+customizations
+www/alarm
+www/audio
+www/customcards
+www/lib
+www/freenas
+tts
+deps
+glances
+zones
+__pycache__
+icloud
+security
+emergency
+# sensitive
+components/binary_sensors/door
+components/binary_sensors/leak 
+components/binary_sensors/motion 
+components/binary_sensors/rf
+components/binary_sensors/window
+components/panels/iframes/iframes.yaml
+components/scripts/remote/rf_buttons.yaml
+components/sensors/htpc
+components/sensors/victron
+lovelace/views/htpc.yaml
+community_plugin/upcoming-media-card
+
+# Files
+home-assistant.log
+lyric.conf
+plex.conf
+scripts.yaml
+versionsonoffhtml.err
+customize.yaml
+automations.yaml
+.uuid
+*.pickle
+scripts.yaml
+.ios.conf
+.HA_VERSION
+.Trash-0
+.shopping_list.json
+.ring_cache.pickle
+.spotify-token-cache
+bwalarm.json
+bwalarm.yaml
+bwalarm_log.json
+ip_bans.yaml
+secrets.yaml
+security.yaml
+known_devices.yaml
+alarm_control_panel.yaml
+emulated_hue_ids.json
+emergency.yaml
+core.entity_registry
+
+# Extensions
+*.db
+*.old
+*.log
+*.conf
+*.HA_VERSION
+*.db-shm
+*.db-wal
+*.pickle

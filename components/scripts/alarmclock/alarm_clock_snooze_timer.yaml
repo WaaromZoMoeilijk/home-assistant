@@ -1,0 +1,7 @@
+alarm_clock_snooze_timer:
+  alias: 'Alarm Clock Snooze Timer'
+  sequence:
+    - delay: '{{ (states.sensor.alarm_clock_snooze.state | int * 60 ) }}'
+    - service: automation.trigger
+      data:
+        entity_id: automation.alarm_clock_activated

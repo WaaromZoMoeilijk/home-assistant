@@ -1,0 +1,24 @@
+title: Camera
+icon: mdi:cctv
+cards:
+  - type: picture-glance
+    title: Front Door
+    entities:
+      - camera.front_door
+    camera_image: camera.front_door
+
+  - type: picture-entity
+    title: Entree
+    entity: camera.entree_cam
+    camera_image: camera.entree_cam
+    show_info: true
+    tap_action: dialog
+    camera_view: live
+
+  - type: picture-entity
+    title: Entree
+    entity: camera.kitchen_cam
+    camera_image: camera.entree_cam
+    show_info: true
+    tap_action: dialog
+    camera_view: live

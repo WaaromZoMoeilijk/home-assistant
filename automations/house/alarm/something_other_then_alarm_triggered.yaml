@@ -1,0 +1,23 @@
+alias: "[Alarm] Something other then Alarm turned on siren"
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: binary_sensor.siren
+  to: 'on'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "rfbridge/cmnd//RfKey2"
+      payload: ""
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "rfbridge/cmnd/RfKey2"
+      payload: ""
+      qos: 2
+  - service: notify.notify
+    data:
+      message: "[Alarm] Something other then [Alarm] turned on siren, i've turned it off"
+  - service: notify.telegram
+    data:
+      message: "[Alarm] Something other then [Alarm] turned on siren, i've turned it off"

@@ -1,0 +1,3 @@
+platform: file
+name: UPS Charge
+file_path: /config/www/freenas/ups_charge.txt

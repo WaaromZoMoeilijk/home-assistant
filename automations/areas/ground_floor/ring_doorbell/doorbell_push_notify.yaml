@@ -1,0 +1,15 @@
+alias: "[Ring] Front Doorbell notify"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.ring_front_door_ding
+    from: 'off'
+    to: 'on'
+action:
+  - service: notify.telegram
+    data:
+      message: "[Ring] Someone is at the front door!"
+  - service: notify.notify
+    data:
+      message: "[Ring] Someone is at the front door!"

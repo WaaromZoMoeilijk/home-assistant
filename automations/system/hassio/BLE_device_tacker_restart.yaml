@@ -1,0 +1,17 @@
+alias: Ezra [BLE] device tracker Restart On
+initial_state: 'on'
+hide_entity: false
+trigger:
+  - platform: homeassistant
+    event: start
+condition:
+  - condition: numeric_state
+    entity_id: sensor.ezra_occupancy_confidence_ble
+    above: 10
+action:
+  - service: device_tracker.see
+    data:
+      dev_id: geheime_dienst
+      location_name: home
+      source_type: bluetooth
+

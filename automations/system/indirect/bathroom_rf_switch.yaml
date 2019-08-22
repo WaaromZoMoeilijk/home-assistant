@@ -1,0 +1,11 @@
+alias: Indirect bathroom 1/1
+hide_entity: true
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: binary_sensor.bathroom_rf_switch
+  from: 'off'
+  to: 'on'
+action:
+  - service: homeassistant.toggle
+    entity_id: light.bathroom

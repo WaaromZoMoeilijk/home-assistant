@@ -1,0 +1,5 @@
+# This loads up my media player configurations
+#
+# https://www.home-assistant.io/components/media_player/
+#
+media_player: !include_dir_list /config/components/media_players

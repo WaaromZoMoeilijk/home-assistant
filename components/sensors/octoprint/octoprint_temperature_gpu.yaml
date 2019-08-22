@@ -1,0 +1,4 @@
+platform: command_line
+command: !secret octoprint_temp_gpu
+name: OctoPrint temperature GPU
+unit_of_measurement: "degree"

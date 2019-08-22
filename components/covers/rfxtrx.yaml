@@ -1,0 +1,8 @@
+platform: rfxtrx
+automatic_add: false
+signal_repetitions: 2
+devices:
+  071a000001020401:
+    name: somfy_downstairs
+  071a000001020301:
+    name: somfy_upstairs

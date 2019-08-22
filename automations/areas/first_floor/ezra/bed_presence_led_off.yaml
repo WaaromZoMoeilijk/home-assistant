@@ -1,0 +1,21 @@
+alias: "[Light on] Bed led on bed presence off"
+hide_entity: false
+initial_state: 'off'
+trigger:
+- platform: state
+  entity_id: binary_sensor.ezra_bed_presence
+  to: 'on'
+condition:
+  condition: and
+  conditions:
+    - condition: time
+      after: '21:00:00'
+      before: '06:00:00'
+    - condition: state
+      entity_id: person.ezra
+      state: 'home'
+action:
+- delay: 00:00:05
+- service: homeassistant.turn_off
+  data:
+    entity_id: switch.bedroom_led

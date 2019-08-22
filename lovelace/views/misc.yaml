@@ -1,0 +1,98 @@
+title: Misc
+icon: mdi:playlist-check
+cards:
+  - type: vertical-stack
+    cards:
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: glance
+          title: Calendar event checker
+        filter:
+          include:
+            - entity_id: binary_sensor.workday_sensor
+              state: 'on'
+            - entity_id: binary_sensor.vacation
+              state: 'on'
+
+      - type: custom:monster-card
+        card:
+          type: entities
+          title: ZRD
+          show_header_toggle: false
+        filter:
+          include:
+            - entity_id: "sensor.afvalkalender_event*"
+
+  - type: entities
+    entities:
+      - sensor.dark_sky_summary
+      - sensor.dark_sky_daily_summary
+      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_dew_point
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_icon
+      - sensor.dark_sky_ozone
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_precip_probability
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+
+  - type: "custom:tiles-card"
+    card_settings:
+      title: Night Light
+      background: var(--paper-card-background-color)
+    global_settings:
+      background: var(--paper-card-background-color)
+    entities:
+      - entity: script.night_light_brightness_up
+        label: Up
+        icon: 'mdi:plus'
+      - entity: script.night_light_brightness_down
+        label: Down
+        icon: 'mdi:minus'
+      - entity: script.night_light_white_toggle
+        label: W/WW
+        icon: 'mdi:lightbulb-on'
+      - entity: script.night_light_color_set
+        label: Color
+        icon: 'mdi:palette'
+      - entity: script.night_light_alarm
+        label: Alarm
+        icon: 'mdi:alarm-light'
+
+  - type: "custom:tiles-card"
+    card_settings:
+      title: RF buttons
+      background: var(--paper-card-background-color)
+    global_settings:
+      background: var(--paper-card-background-color)
+    entities:
+      - entity: script.alarm_on
+        label: 'Siren ON'
+        icon: 'mdi:bell-ring'
+      - entity: script.alarm_off
+        label: 'Siren OFF'
+        icon: 'mdi:bell'
+      - entity: script.rpi_fan_on
+        label: 'RPI ON'
+        icon: 'mdi:fan'
+      - entity: script.rpi_fan_off
+        label: 'RPI OFF'
+        icon: 'mdi:fan'
+
+  - type: entities
+    title: To Do
+    show_header_toggle: false
+    entities:
+      - sensor.season
+

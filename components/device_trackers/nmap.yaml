@@ -1,0 +1,21 @@
+platform: nmap_tracker
+scan_interval: 30
+new_device_defaults:
+  track_new_devices: true
+exclude:
+  - !secret hassio_host
+hosts:
+  - !secret salora_host
+  - !secret iphone_host
+  - !secret octoprint_host
+  - !secret pitft_host
+  - !secret steam_host
+  - !secret laptop_host
+  - !secret ipad_host
+  - !secret watch_host
+  - !secret salora_host
+  - !secret printer_host
+  - !secret playstation_host
+  - !secret steam_link_host  
+  - !secret freenas_host
+  - !secret windows_host

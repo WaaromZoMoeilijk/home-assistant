@@ -1,0 +1,3 @@
+lyric:
+  client_id: !secret lyric_key
+  client_secret: !secret lyric_secret

@@ -1,0 +1,10 @@
+alexa:
+  name: Alexa
+  icon: mdi:alexa
+  entities:
+    - media_player.bedroom
+    - media_player.car
+    - media_player.first_floor
+    - media_player.kitchen
+    - media_player.livingroom
+

@@ -1,0 +1,30 @@
+alias: "[Light on] Jade LED on motion"
+hide_entity: false
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: binary_sensor.jade_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.jade_door
+  to: 'on'
+condition:
+- condition: numeric_state
+  entity_id: sun.sun
+  value_template: '{{ state.attributes.elevation }}'
+  below: 8
+action:
+- service: mqtt.publish
+  data:
+    topic: "cmnd/jade/Dimmer"
+    payload: "25"
+    qos: 2
+- service: homeassistant.turn_on
+  data:
+    entity_id: light.jade
+- service: timer.cancel
+  data:
+    entity_id: timer.jade
+- service: timer.start
+  data:
+    entity_id: timer.jade

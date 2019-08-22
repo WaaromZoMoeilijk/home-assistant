@@ -1,0 +1,268 @@
+title: Second Floor
+icon: mdi:format-vertical-align-top
+cards:
+  - type: entities
+    title: Second Floor
+    show_header_toggle: false
+    entities:
+      - type: section
+        label: Switches
+
+      - type: switch
+        entity: input_boolean.pioneer
+      - type: light
+        entity: light.desk_light
+      - type: light
+        entity: light.victron_light
+      - type: light
+        entity: light.it_room_light
+      - type: switch
+        entity: switch.desk
+      - type: switch
+        entity: switch.desk_second
+      - type: switch
+        entity: switch.overloop_misc
+
+      - type: section
+        label: Computers
+
+      - type: switch
+        entity: switch.desktop
+      - type: switch
+        entity: input_boolean.grub_reboot
+      - type: switch
+        entity: switch.laptop
+
+      - type: section
+        label: Victron
+
+      - type: fan
+        entity: fan.ventilation
+      - type: fan
+        entity: fan.second_floor_fan 
+          
+      - type: section
+        label: Sensors
+
+      - type: Sensor
+        entity: binary_sensor.washer_leak
+      - type: Sensor
+        entity: binary_sensor.it
+      - type: Sensor
+        entity: binary_sensor.it_motion
+      - type: Sensor
+        entity: binary_sensor.overloop_motion
+      - type: Timer
+        entity: timer.it
+
+      - type: custom:mini-media-player
+        entity: media_player.car
+        name: IT room Echo
+        artwork: cover
+        power_color: true
+        hide_volume: false
+        show_progress: true        
+
+  - type: entities
+    show_header_toggle: false
+    entities:
+      - type: section
+        label: Environment
+
+      - type: custom:mini-graph-card
+        entities: 
+          - sensor.overloop_misc_si7021_humidity
+          - sensor.desk_si7021_humidity
+          - sensor.victron_battery_am2301_00_humidity  
+          - sensor.victron_battery_am2301_02_humidity        
+        hour24: true          
+        height: 50
+        line_width: 2
+        font_size: 70
+        hours_to_show: 168
+        points_per_hour: 1
+        show:
+          extrema: true
+          fill: true    
+
+      - type: custom:mini-graph-card
+        entities: 
+          - sensor.second_floor_mold_indicator
+          - sensor.datacentre_mold_indicator
+          - sensor.batterbox_in_mold_indicator          
+        hour24: true          
+        height: 50
+        line_width: 2
+        font_size: 70
+        hours_to_show: 168
+        points_per_hour: 1
+        show:
+          extrema: true
+          fill: true              
+
+      - type: custom:mini-graph-card
+        entities: 
+          - sensor.overloop_misc_si7021_temperature
+          - sensor.desk_si7021_temperature
+          - sensor.victron_battery_am2301_00_temperature 
+          - sensor.victron_battery_am2301_02_temperature         
+        hour24: true          
+        height: 50
+        line_width: 2
+        font_size: 70
+        hours_to_show: 168
+        points_per_hour: 1
+        show:
+          extrema: true
+          fill: true    
+
+  - type: entities
+    title: OctoPrint
+    show_header_toggle: false
+    entities:
+      - sensor.octoprint_current_state
+
+      - type: custom:vertical-stack-in-card
+        cards:                
+          - type: conditional
+            conditions:
+              - entity: binary_sensor.octoprint_printing_error
+                state: 'On'       
+            card:
+              type: entities 
+              show_header_toggle: false                    
+              entities: 
+                - binary_sensor.octoprint_printing_error
+
+          - type: conditional
+            conditions:
+              - entity: sensor.octoprint_current_state
+                state: 'Printing'         
+            card:
+              type: entities
+              show_header_toggle: false                      
+              entities: 
+                - sensor.octoprint_time_elapsed_formatted
+                - sensor.octoprint_time_remaining_formatted        
+
+          - type: conditional
+            conditions:
+              - entity: sensor.octoprint_job_percentage
+                state_not: '0'
+            card:
+              type: custom:bar-card
+              title_position: inside
+              entity: sensor.octoprint_job_percentage
+              title: Print job percentage
+              align: center
+              padding: 5px
+              max: 100
+              card_style: 
+                border-radius: 5px
+
+          - type: horizontal-stack
+            cards:     
+
+              - type: conditional
+                conditions:
+                  - entity: sensor.octoprint_actual_bed_temp
+                    state_not: '0'
+                card:
+                    type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.octoprint_actual_bed_temp
+                    title: Bed temperature
+                    align: center
+                    padding: 5px
+                    max: 120
+                    card_style: 
+                      border-radius: 5px
+
+              - type: conditional
+                conditions:
+                  - entity: sensor.octoprint_actual_tool0_temp
+                    state_not: '0'
+                card:
+                    type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.octoprint_actual_tool0_temp 
+                    title: Extruder temperature
+                    align: center
+                    padding: 5px
+                    max: 260
+                    card_style: 
+                      border-radius: 5px                 
+
+          - type: horizontal-stack
+            cards:     
+
+              - type: conditional
+                conditions:
+                  - entity: sensor.octoprint_target_bed_temp
+                    state_not: '0'
+                card:
+                    type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.octoprint_target_bed_temp
+                    title: Bed target temperature
+                    align: center
+                    padding: 5px
+                    max: 120
+                    card_style: 
+                      border-radius: 5px
+
+              - type: conditional
+                conditions:
+                  - entity: sensor.octoprint_target_tool0_temp
+                    state_not: '0'
+                card:
+                    type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.octoprint_target_tool0_temp 
+                    title: Extruder target temperature
+                    align: center
+                    padding: 5px
+                    max: 260
+                    card_style: 
+                      border-radius: 5px        
+
+          - type: horizontal-stack
+            cards:     
+
+              - type: conditional
+                conditions:
+                  - entity: sensor.octoprint_temperature_cpu
+                    state_not: '0'
+                card:
+                    type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.octoprint_temperature_cpu 
+                    title: RPI CPU temperature
+                    align: center
+                    padding: 5px
+                    max: 90
+                    card_style: 
+                      border-radius: 5px     
+
+              - type: conditional
+                conditions:
+                  - entity: sensor.octoprint_temperature_gpu
+                    state_not: '0'
+                card:
+                    type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.octoprint_temperature_gpu 
+                    title: RPI GPU temperature
+                    align: center
+                    padding: 5px
+                    max: 90
+                    card_style: 
+                      border-radius: 5px     
+
+          - type: picture-entity
+            title: OctoPrint
+            entity: camera.octoprint
+            camera_image: camera.octoprint
+            show_info: true
+            tap_action: dialog
+            camera_view: live

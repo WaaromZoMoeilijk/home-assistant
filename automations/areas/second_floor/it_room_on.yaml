@@ -1,0 +1,31 @@
+alias: "[Light on] IT room desk, light & computers on."
+hide_entity: false
+initial_state: 'false'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.it
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.it_motion
+    to: 'on'
+action:
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - switch.desk
+        - light.desk_light
+        - switch.desktop
+        - switch.desk_second
+  - service: timer.cancel
+    data:
+      entity_id: timer.it
+  - service: timer.start
+    data:
+      entity_id: timer.it
+  - condition: state
+    entity_id: input_boolean.pioneer  
+    state: 'off'        
+  - service: input_boolean.turn_on
+    data:
+      entity_id:
+        - input_boolean.pioneer        

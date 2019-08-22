@@ -1,0 +1,6 @@
+platform: wake_on_lan
+name: Laptop
+mac_address: !secret laptop_mac
+host: !secret laptop_host
+turn_off:
+  service: shell_command.laptop_suspend

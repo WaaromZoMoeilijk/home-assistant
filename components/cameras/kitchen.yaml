@@ -1,0 +1,4 @@
+platform: mjpeg
+still_image_url: !secret kitchen_cam
+mjpeg_url: !secret kitchen_cam_stream
+name: Kitchen Cam

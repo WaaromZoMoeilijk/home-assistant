@@ -1,0 +1,15 @@
+switch_off_devices_all:
+  name: Good Bye
+  entities:
+    - switch.bedroom_charger
+    - switch.bedroom_light
+    - switch.bedroom_led
+    - switch.bedroom_lights
+    - switch.dinner
+    - switch.desk
+    - switch.laptop
+    - switch.livingroom_charger
+    - switch.livingroom_light_3
+    - switch.desktop
+    - group.all_lights
+    - fan.fan

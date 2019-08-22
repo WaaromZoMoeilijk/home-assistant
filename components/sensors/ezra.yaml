@@ -1,0 +1,5 @@
+platform: template
+sensors: 
+  ezra_location_formatted:
+    value_template: "{{ state_attr('sensor.ezra_location', 'Formatted Address') }}" 
+    friendly_name: 'Ezra Location' 

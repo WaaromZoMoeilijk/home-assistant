@@ -1,0 +1,4 @@
+sonoff_update_available:
+  name: Sonoff Update Avaiable
+  initial: off
+  icon: mdi:lightbulb-on

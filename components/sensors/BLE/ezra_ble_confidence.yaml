@@ -1,0 +1,10 @@
+platform: min_max
+name: "Ezra occupancy confidence BLE"
+type: max
+round_digits: 0
+entity_ids:
+  - sensor.ground_floor_ble
+  - sensor.ground_floor_iwatch_ble
+  - sensor.datacentre_ble
+  - sensor.kitchen_ble
+  - sensor.kitchen_iwatch_ble

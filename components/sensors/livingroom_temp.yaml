@@ -1,0 +1,8 @@
+platform: template
+sensors: 
+  livingroom_temperature:
+    value_template: >
+      {{ state_attr('climate.liric', 'current_temperature') }}
+    friendly_name: 'Livingroom temperature' 
+    unit_of_measurement: 'degree'
+

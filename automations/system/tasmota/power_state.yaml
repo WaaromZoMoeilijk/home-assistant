@@ -1,0 +1,20 @@
+alias: "[Tasmota] Power state on HA start-up"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/state"
+      payload: ""
+      qos: 2
+  - service: mqtt.publish
+    data:
+     topic: sonoffs/cmnd/POWER
+     qos: 2
+  - service: mqtt.publish
+    data:
+     topic: sonoffs/cmnd/POWER2
+     qos: 2

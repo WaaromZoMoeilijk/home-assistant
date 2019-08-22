@@ -1,0 +1,15 @@
+logger:
+  default: info
+  logs:
+    homeassistant.components.binary_sensor: error
+    homeassistant.components.command_line: fatal
+    homeassistant.components.device_tracker: error
+    homeassistant.components.template: error
+    homeassistant.components.mqtt: error    
+    homeassistant.components.calendar: debug
+    homeassistant.components.notify: debug
+    homeassistant.components.alarm_control_panel: debug
+    #homeassistant.components.http: warning
+    #homeassistant.components.mqtt: critical
+    #homeassistant.components.loader: critical
+    #homeassistant.components.shell_command: critical    

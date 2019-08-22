@@ -1,0 +1,5 @@
+platform: mqtt
+name: "IT Power"
+state_topic: "itpow/tele/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Power"] }}'
+unit_of_measurement: "W"

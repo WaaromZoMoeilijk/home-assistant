@@ -1,0 +1,1 @@
+lovelace_touch: "/bin/touch /config/ui-lovelace.yaml; /usr/bin/find /config/lovelace/ -type f  -exec /bin/touch {} +"

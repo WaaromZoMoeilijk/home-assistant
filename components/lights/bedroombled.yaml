@@ -1,0 +1,33 @@
+platform: mqtt
+name: "Bedroom BLED"
+command_topic: "bedroomled/cmnd/POWER"
+state_topic: "bedroomled/tele/STATE"
+state_value_template: "{{value_json.POWER}}"
+availability_topic: "bedroomled/tele/LWT"
+brightness_command_topic: "bedroomled/cmnd/Dimmer"
+brightness_state_topic: "bedroomled/tele/STATE"
+brightness_scale: 100
+on_command_type: "brightness"
+brightness_value_template: "{{value_json.Dimmer}}"
+white_value_state_topic: "bedroomled/tele/STATE"
+white_value_command_topic: "bedroomled/cmnd/White"
+white_value_scale: 100
+white_value_template: "{{ value_json.Channel[3] }}"
+rgb_command_topic: "bedroomled/cmnd/Color2"
+rgb_state_topic: "bedroomled/tele/STATE"
+rgb_value_template: "{{value_json.Color.split(',')[0:3]|join(',')}}"
+effect_command_topic: "bedroomled/cmnd/Scheme"
+effect_state_topic: "bedroomled/tele/STATE"
+effect_value_template: "{{value_json.Scheme}}"
+effect_list:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+payload_on: "ON"
+payload_off: "OFF"
+payload_available: "Online"
+payload_not_available: "Offline"
+qos: 2
+retain: false

@@ -1,0 +1,13 @@
+alias: "[BLE] state on HA start-up"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  - platform: homeassistant
+    event: start
+action:
+  - delay: 00:03:00
+  - service: mqtt.publish
+    data:
+      topic: "monitor/scan/arrive"
+      payload: ""
+      qos: 2

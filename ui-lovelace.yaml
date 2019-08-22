@@ -1,0 +1,19 @@
+title: Ezra
+resources: !include_dir_list lovelace/resources
+cch:
+  compact_header: true
+  swipe: true
+  swipe_animate: none
+views:
+  - !include lovelace/views/front_screen.yaml
+  - !include lovelace/views/ground_floor.yaml
+  - !include lovelace/views/first_floor.yaml
+  - !include lovelace/views/second_floor.yaml
+  - !include lovelace/views/power.yaml
+  - !include lovelace/views/system.yaml
+  - !include lovelace/views/camera.yaml
+  - !include lovelace/views/misc.yaml
+  - !include lovelace/views/htpc.yaml
+  - !include lovelace/views/chromecast.yaml   
+  - !include lovelace/views/automations.yaml
+

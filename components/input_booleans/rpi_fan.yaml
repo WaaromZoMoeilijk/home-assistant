@@ -1,0 +1,4 @@
+rpi_fan:
+  name: RaspberryPi 3 Fan
+  initial: off
+  icon: mdi:fan

@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Central Heating Voltage"
+state_topic: "centralheating/tele/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Voltage"] }}'
+unit_of_measurement: "V"

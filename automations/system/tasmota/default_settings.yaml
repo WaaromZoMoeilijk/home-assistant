@@ -1,0 +1,83 @@
+alias: "[Tasmota] Default settings"
+hide_entity: false
+initial_state: 'off'
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/SetOption19"
+      payload: "1"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/SwitchRetain"
+      payload: "0"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/PowerRetain"
+      payload: "1"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/ButtonRetain"
+      payload: "1"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/ButtonRetain"
+      payload: "0"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/PowerOnState"
+      payload: "3"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/SetOption60"
+      payload: "0"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/Sleep"
+      payload: "200"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/WifiConfig"
+      payload: "5"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/WebPassword"
+      payload: !secret tasmota_web_pass
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/LedState"
+      payload: "0"
+      qos: 2
+    # Device specific overrides
+  - service: mqtt.publish
+    data:
+      topic: "bathroom/cmnd/PowerOnState"
+      payload: "0"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "rpi3/cmnd/PowerOnState"
+      payload: "1"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoff_MBR_fan/cmnd/SetOption19"
+      payload: "0"
+      qos: 2
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/Restart"
+      payload: "1"
+      qos: 2

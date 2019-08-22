@@ -1,0 +1,23 @@
+alias: "[Light off] IT room desk, light and computers off"
+hide_entity: false
+initial_state: 'false'
+trigger:
+  platform: event
+  event_type: timer.finished
+  event_data:
+    entity_id: timer.it
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - switch.desk
+        - light.desk_light
+        - switch.desk_second
+        - switch.desktop        
+  - condition: state
+    entity_id: input_boolean.pioneer  
+    state: 'on'      
+  - service: input_boolean.turn_off
+    data:
+      entity_id:
+        - input_boolean.pioneer     

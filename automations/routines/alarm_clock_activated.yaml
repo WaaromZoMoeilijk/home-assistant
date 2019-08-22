@@ -1,0 +1,18 @@
+alias: '[Alarm Clock] Activated'
+initial_state: 'on'
+hide_entity: False
+trigger:
+- platform: template
+  value_template: '{{ states.sensor.time.state == states.sensor.alarm_clock_time_long.state }}'
+condition:
+  condition: and
+  conditions:
+  - condition: state
+    entity_id: input_boolean.alarm_clock_status
+    state: 'on'
+  - condition: state
+    entity_id: person.ezra
+    state: 'home'
+action:
+- service: script.turn_on   # iOS Push Notification
+  entity_id: script.alarm_clock_awake_pushed

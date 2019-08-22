@@ -1,0 +1,19 @@
+alias: "[RPI] Turn on FAN above 48 degree"
+initial_state: 'on'
+trigger:
+- platform: numeric_state
+  entity_id: sensor.pitft_temperature
+  above: '48'
+condition:
+  - condition: state
+    entity_id: input_boolean.rpi_fan
+    state: 'off'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "rfbridge/cmnd/RfKey3"
+      payload: ""
+      qos: 2
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.rpi_fan

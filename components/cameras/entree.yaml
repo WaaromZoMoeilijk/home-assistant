@@ -1,0 +1,4 @@
+platform: mjpeg
+still_image_url: !secret entree_cam
+mjpeg_url: !secret entree_cam_stream
+name: Entree Cam

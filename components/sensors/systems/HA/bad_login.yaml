@@ -1,0 +1,3 @@
+platform: command_line
+name: Failed Login
+command: 'cat /config/bash/grep_output/login.txt'

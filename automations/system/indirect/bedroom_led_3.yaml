@@ -1,0 +1,11 @@
+alias: Indirect Bedroom LED 3/4
+hide_entity: true
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: switch.bedroom_led
+  from: 'on'
+  to: 'off'
+action:
+  - service: homeassistant.turn_off
+    entity_id: light.bled

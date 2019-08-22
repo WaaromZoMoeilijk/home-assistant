@@ -1,0 +1,7 @@
+platform: plex
+host: plex.wzm
+token: !secret plex_token
+ssl: true
+verify_ssl: false
+username: !secret plex_user
+password: !secret plex_pass

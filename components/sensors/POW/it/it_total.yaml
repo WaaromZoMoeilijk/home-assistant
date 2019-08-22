@@ -1,0 +1,5 @@
+platform: mqtt
+name: "IT Total Consumption"
+state_topic: "itpow/tele/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Total"] }}'
+unit_of_measurement: "kWh"

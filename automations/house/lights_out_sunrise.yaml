@@ -1,0 +1,17 @@
+alias: "[Light off] Lights off on sunrise"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: sun
+  event: sunrise
+  offset: '00:30:00'
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.ezra
+      state: 'home'
+action:
+- service: homeassistant.turn_off
+  data:
+    entity_id: group.all_lights

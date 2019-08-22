@@ -1,0 +1,20 @@
+alias: "[Curtain] Close curtains [Ezra] based on SUN"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: numeric_state
+  entity_id: sun.sun
+  value_template: '{{ state.attributes.elevation }}'
+  below: 4
+condition:
+  condition: and
+  conditions:
+    - condition: state
+      entity_id: person.ezra
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.curtain_ezra
+      state: 'off'
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.curtain_ezra

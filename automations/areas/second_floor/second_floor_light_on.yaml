@@ -1,0 +1,25 @@
+alias: '[Lights on] Victron Light ON Warm White'
+initial_state: 'on'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.it
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.overloop_motion
+    to: 'on'
+condition:
+  condition: time
+  after: '06:00:00'
+  before: '20:00:00'
+action:
+  - service: mqtt.publish
+    data:
+      topic: "bedroomb1/cmnd/Color"
+      payload: "0,0,0,0,250"
+      qos: 2
+  - service: timer.cancel
+    data:
+      entity_id: timer.nightlight
+  - service: timer.start
+    data:
+      entity_id: timer.nightlight

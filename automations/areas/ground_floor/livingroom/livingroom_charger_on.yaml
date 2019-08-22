@@ -1,0 +1,16 @@
+alias: '[Charger] Livingroom on'
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: numeric_state
+  entity_id: sensor.ezra_s_ipad_battery_level
+  below: 75
+condition:
+  - condition: state
+    entity_id: device_tracker.ezras_ipad
+    state: 'home'
+action:
+  - service: switch.turn_on
+    data:
+      entity_id:
+        - switch.livingroom_charger

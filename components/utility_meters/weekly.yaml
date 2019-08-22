@@ -1,0 +1,17 @@
+weekly_power_offpeak:
+  source: sensor.power_consumption_low
+  cycle: weekly
+  net_consumption: true
+weekly_power_peak:
+  source: sensor.power_consumption_normal
+  cycle: weekly
+  net_consumption: true
+weekly_gas:
+  source: sensor.gas_consumption
+  cycle: weekly
+weekly_power_production_offpeak:
+  source: sensor.power_production_low
+  cycle: weekly
+weekly_power_production_peak:
+  source: sensor.power_production_normal
+  cycle: weekly

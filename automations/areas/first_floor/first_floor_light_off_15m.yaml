@@ -1,0 +1,14 @@
+alias: "[Light off] Turn off first floor light"
+hide_entity: false
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: light.first_floor
+  from: 'off'
+  to: 'on'
+  for:
+    minutes: 15
+action:
+- service: homeassistant.turn_off
+  data:
+    entity_id: light.first_floor

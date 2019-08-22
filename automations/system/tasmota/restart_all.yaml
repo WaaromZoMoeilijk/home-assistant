@@ -1,0 +1,17 @@
+alias: "[Tasmota] Restart all devices"
+hide_entity: false
+initial_state: 'off'
+trigger:
+  platform: homeassistant
+  event: start
+action:
+  - service: mqtt.publish
+    data:
+      topic: "sonoffs/cmnd/Restart"
+      payload: "1"
+      qos: 1
+  - service: mqtt.publish
+    data:
+      topic: "fridge/cmnd/Restart"
+      payload: "1"
+      qos: 1

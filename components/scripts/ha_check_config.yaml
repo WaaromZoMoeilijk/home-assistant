@@ -1,0 +1,4 @@
+config_check:
+  alias: Check config
+  sequence:
+    service: config_check.run

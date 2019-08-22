@@ -1,0 +1,4 @@
+ho_reboot:
+  alias: 'Reboot host'
+  sequence:
+    - service: hassio.host_reboot

@@ -1,0 +1,4 @@
+platform: command_line
+name: Error
+command: 'cat /config/bash/grep_output/error.txt'
+#value_template: '{{ value | int -1 }}'

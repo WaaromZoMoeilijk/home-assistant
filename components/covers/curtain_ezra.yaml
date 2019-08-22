@@ -1,0 +1,20 @@
+platform: template
+covers:
+  curtain_mbr:
+    friendly_name: "Curtain Ezra"
+    open_cover:
+      - service: mqtt.publish
+        data:
+          topic: "mbr/cmnd/backlog"
+          payload: "dimmer 20; delay 200; power 0"
+          qos: 2
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.curtain_ezra
+    close_cover:
+      - service: mqtt.publish
+        data:
+          topic: "mbr/cmnd/backlog"
+          payload: "dimmer 10; delay 190; power 0"
+          qos: 2
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.curtain_ezra

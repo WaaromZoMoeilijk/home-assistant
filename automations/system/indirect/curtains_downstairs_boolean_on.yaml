@@ -1,0 +1,11 @@
+alias: "[Curtain] Downstairs boolean on"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: input_boolean.curtain_downstairs
+  from: 'off'
+  to: 'on'
+action:
+  service: cover.close_cover
+  entity_id: cover.curtain_downstairs

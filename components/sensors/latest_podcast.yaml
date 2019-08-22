@@ -1,0 +1,6 @@
+platform: scrape
+resource: https://hasspodcast.io/feed/podcast
+name: Latest HA Podcast
+select: 'enclosure:nth-of-type(1)'
+value_template: '{{ value.split("/")[7] }}'
+attribute: url

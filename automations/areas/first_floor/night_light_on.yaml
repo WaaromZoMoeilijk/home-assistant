@@ -1,0 +1,57 @@
+alias: "[Light on] Night light on, on motion"
+hide_entity: false
+initial_state: 'on'
+trigger:
+- platform: state
+  entity_id: binary_sensor.first_floor_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.jade_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.noan_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.jade_door
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.noan_door
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.bathroom
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.stair_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.overloop_motion
+  to: 'on'
+- platform: state
+  entity_id: binary_sensor.it
+  to: 'on'  
+condition:
+- condition: numeric_state
+  entity_id: sun.sun
+  value_template: '{{ state.attributes.elevation }}'
+  below: 4
+action:
+- service: mqtt.publish
+  data:
+    topic: "cmnd/nightlight/Dimmer"
+    payload: "5"
+    qos: 1
+- service: mqtt.publish
+  data:
+    topic: "cmnd/nightlight/Color2"
+    payload: "#0000FF"
+    qos: 1
+- service: homeassistant.turn_on
+  data:
+    entity_id:
+      - light.night_light_3
+- service: timer.cancel
+  data:
+    entity_id: timer.nightlight
+- service: timer.start
+  data:
+    entity_id: timer.nightlight

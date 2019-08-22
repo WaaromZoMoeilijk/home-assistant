@@ -1,0 +1,5 @@
+platform: mqtt
+devices:
+  alarmble: 'monitor/alarmble/device_tracker'
+  kitchenble: 'monitor/kitchenble/device_tracker'
+  itble: 'monitor/itble/device_tracker'

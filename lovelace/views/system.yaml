@@ -1,0 +1,586 @@
+title: System
+icon: mdi:harddisk
+cards:    
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        entity: script.ha_restart
+        icon: mdi:home-assistant
+        name: Restart HA
+
+      - type: custom:button-card
+        entity: script.ho_reboot 
+        icon: mdi:desktop-tower 
+        name: Reboot Host
+
+      - type: custom:button-card
+        entity: script.config_check
+        icon: mdi:clipboard-check
+        #lock: true
+        name: Check Config
+
+      - type: custom:button-card
+        entity: script.backup_now
+        icon: mdi:backup-restore
+        name: Snapshot
+
+  - type: vertical-stack
+    cards:    
+      - type: entities
+        #title: 'Hass.io Server'
+        show_header_toggle: off
+        entities:
+          - type: custom:vertical-stack-in-card
+            cards:
+
+              - type: horizontal-stack
+                cards:
+
+                  - type: vertical-stack
+                    cards:
+                      - type: custom:card-modder
+                        card: 
+                          type: picture
+                          image: /local/images/hass.jpg
+                        style:                 
+                          border-radius: 5px
+
+                  - type: vertical-stack
+                    cards:
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: sensor.ha_uptime
+                        title: Uptime
+                        align: center
+                        padding: 5px
+                        card_style: 
+                          border-radius: 5px           
+
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: sensor.current_version
+                        title: HA Current version
+                        align: center
+                        padding: 5px
+                        max: 60
+                        card_style: 
+                          border-radius: 5px 
+
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: sensor.ha_restart_time
+                        title: Restart Time
+                        align: center
+                        padding: 5px
+                        max: 400
+                        card_style: 
+                          border-radius: 5px
+
+          - type: custom:bar-card           
+            align: split
+            show_icon: true
+            padding: 4px
+            columns: 2
+            card_style: 
+              border-radius: 5px
+            entities:
+              - entity: sensor.disk_use_percent
+                title: Disk
+              - entity: sensor.memory_use_percent
+                title: RAM
+
+          - type: custom:bar-card
+            align: split
+            show_icon: true
+            padding: 4px
+            columns: 2
+            card_style: 
+              border-radius: 5px
+            entities:
+              - entity: sensor.processor_use
+                title: CPU
+              - entity: sensor.cpu_temperature
+                title: Temp  
+                icon: mdi:thermometer    
+
+          - type: custom:bar-card
+            align: split
+            show_icon: true
+            padding: 4px
+            columns: 2
+            card_style: 
+              border-radius: 5px
+            entities:
+              - entity: sensor.swap_use_percent
+                title: SWAP             
+              - entity: sensor.db_size
+                title: DB  
+                max: 60000                  
+
+          - type: custom:bar-card
+            align: split
+            show_icon: true
+            padding: 4px
+            columns: 2
+            card_style: 
+              border-radius: 5px
+            entities:
+              - entity: sensor.error
+                title: Error      
+                max: 15000                      
+              - entity: sensor.warning
+                title: Warnings
+                max: 5000                   
+
+          - type: custom:bar-card
+            align: split
+            show_icon: true
+            padding: 4px
+            columns: 2
+            card_style: 
+              border-radius: 5px
+            entities:
+              - entity: sensor.home_assistant_log
+                title: Log size
+              - entity: sensor.failed_login
+                title: Failed logins
+
+          - type: custom:monster-card
+            show_empty: false
+            card:
+              type: entities
+            filter:
+              include:     
+                - entity_id: "input_boolean.ha_update_available"   
+                  options:
+                    secondary_info: last-changed         
+                - entity_id: "sensor.potential_breaking_changes"   
+                  options:
+                    secondary_info: last-changed                             
+                - entity_id: "input_boolean.sonoff_update_available"   
+                  options:
+                    secondary_info: last-changed                              
+                - entity_id: "sensor.hacs"   
+                  options:
+                    secondary_info: last-changed                                       
+              exclude:
+                - entity_id: "sensor.hacs"      
+                  state: '0'
+                - entity_id: "input_boolean.ha_update_available"   
+                  state: 'off'     
+                - entity_id: "input_boolean.sonoff_update_available"   
+                  state: 'off'
+                - entity_id: "sensor.potential_breaking_changes"   
+                  state: '0'
+
+      - type: custom:podcast-card
+        entity: sensor.ha_podcasts
+        name: Podcasts
+        default_target: media_player.car
+        show_player: true
+        custom_player: true 
+  
+  - type: custom:vertical-stack-in-card
+    #title: Alarm RPI3
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:card-modder
+            card: 
+              type: picture
+              image: /local/images/rpi3.jpg
+            style:                 
+              border-radius: 5px
+
+          - type: vertical-stack
+            cards:
+              - type: custom:bar-card
+                title_position: inside
+                entity: sensor.alarm_rpi_uptime
+                title: Uptime
+                align: center
+                padding: 5px
+                card_style: 
+                  border-radius: 5px 
+              - type: entities
+                entities:
+                  - type: call-service
+                    name: Reboot device 
+                    service: shell_command.alarm_reboot
+                    icon: mdi:restart
+                  - type: switch 
+                    entity: switch.raspberrypi3
+                  - type: switch
+                    entity: input_boolean.rpi_fan
+                    icon: mdi:fan
+
+      - type: custom:bar-card           
+        align: split
+        show_icon: true
+        padding: 4px
+        columns: 2
+        card_style: 
+          border-radius: 5px
+        entities:
+          - entity: sensor.alarmdiskuse
+            title: Disk
+          - entity: sensor.alarmmemoryuse
+            title: RAM
+
+      - type: custom:bar-card
+        align: split
+        show_icon: true
+        padding: 4px
+        columns: 2
+        card_style: 
+          border-radius: 5px
+        entities:
+          - entity: sensor.alarmcpuusage
+            title: CPU
+          - entity: sensor.alarmtemperature
+            title: Temp  
+            icon: mdi:thermometer  
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:     
+            - entity_id: "sensor.alarmpowerstatus"   
+              options:
+                secondary_info: last-changed          
+          exclude:
+            - entity_id: "sensor.alarmpowerstatus"      
+              state: 'Everything is working as intended'              
+
+  - type: custom:vertical-stack-in-card
+    #title: Kitchen RPI Zero
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:card-modder
+            card: 
+              type: picture
+              image: /local/images/rpizero.jpg
+            style:                 
+              border-radius: 5px
+
+          - type: vertical-stack
+            cards:
+              - type: entities
+                entities:
+                  - type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.rpi_zero_uptime  
+                    title: Uptime
+                    align: center
+                    padding: 5px
+                    card_style: 
+                      border-radius: 5px 
+
+                  - type: call-service
+                    name: Reboot device 
+                    service: shell_command.rpi_zero_kitchen_reboot
+                    icon: mdi:restart
+                    
+      - type: custom:bar-card           
+        align: split
+        show_icon: true
+        padding: 4px
+        columns: 2
+        card_style: 
+          border-radius: 5px
+        entities:
+          - entity: sensor.kitchenrpizerodiskuse
+            title: Disk
+          - entity: sensor.kitchenrpizeromemoryuse
+            title: RAM
+
+      - type: custom:bar-card
+        align: split
+        show_icon: true
+        padding: 4px
+        columns: 2
+        card_style: 
+          border-radius: 5px
+        entities:
+          - entity: sensor.kitchenrpizerocpuusage
+            title: CPU
+          - entity: sensor.kitchenrpizerotemperature
+            title: Temp  
+            icon: mdi:thermometer          
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:     
+            - entity_id: "sensor.kitchenrpizeropowerstatus"   
+              options:
+                secondary_info: last-changed          
+          exclude:
+            - entity_id: "sensor.kitchenrpizeropowerstatus"      
+              state: 'Everything is working as intended'
+
+  - type: custom:search-card
+    max_results: 10
+
+  - type: entities
+    entities:
+      - type: cast
+        name: Cast
+        view: '9'
+
+  - type: vertical-stack
+    cards:
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.speedtest_ping
+            hour24: true              
+            height: 20
+            line_width: 2
+            font_size: 70
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              #extrema: true
+              fill: true
+              graph: bar
+        
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.speedtest_download
+            hour24: true
+            height: 50
+            line_width: 2
+            font_size: 70
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              extrema: true
+              fill: true
+            color_thresholds:
+              - value: 150
+                color: "#bf4040"
+                
+          - type: custom:mini-graph-card
+            entities: 
+              - sensor.speedtest_upload
+            hour24: true
+            height: 50
+            line_width: 2
+            font_size: 70
+            hours_to_show: 168
+            points_per_hour: 1
+            show:
+              extrema: true
+              fill: true
+            color_thresholds:
+              - value: 13
+                color: "#bf4040"
+
+  - type: entities
+    show_header_toggle: off
+    title: Home assistant statistics
+    entities:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: horizontal-stack
+            cards:          
+              - type: custom:bar-card
+                title: Automations
+                entity: sensor.automation_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 400
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 300
+                  color: '#1db954'
+                - value: 400
+                  color: '#bf9540'
+            
+              - type: custom:bar-card
+                title: Binary Sensors
+                entity: sensor.binary_sensor_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 200
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 150
+                  color: '#1db954'
+                - value: 200
+                  color: '#bf9540'
+        
+              - type: custom:bar-card
+                title: Cameras
+                entity: sensor.camera_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 10
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 8
+                  color: '#1db954'
+                - value: 10
+                  color: '#bf9540'
+        
+          - type: horizontal-stack
+            cards:          
+              - type: custom:bar-card
+                title: Fans
+                entity: sensor.fan_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 6
+                severity:
+                - value: 0
+                  color: '#bf4040'
+                - value: 5
+                  color: '#1db954'
+                - value: 10
+                  color: '#bf9540'
+            
+              - type: custom:bar-card
+                title: Lights
+                entity: sensor.lights_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 30
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 30
+                  color: '#1db954'
+                - value: 40
+                  color: '#bf9540'
+        
+              - type: custom:bar-card
+                title: Tracked Devices
+                entity: sensor.tracker_count
+                title_position: inside
+                align: center 
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 88
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 87
+                  color: '#1db954'
+                - value: 100
+                  color: '#bf9540'
+          
+          - type: horizontal-stack
+            cards:          
+              - type: custom:bar-card
+                title: Media Players
+                entity: sensor.media_player_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 20
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 16
+                  color: '#1db954'
+                - value: 30
+                  color: '#bf9540'
+                  
+              - type: custom:bar-card
+                title: Scripts
+                entity: sensor.script_count
+                title_position: inside
+                align: center 
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 35
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 34
+                  color: '#1db954'
+                - value: 40
+                  color: '#bf9540'
+        
+          - type: horizontal-stack
+            cards:          
+              - type: custom:bar-card
+                title: Sensors
+                entity: sensor.sensor_count
+                title_position: inside
+                align: center
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 786
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 785
+                  color: '#1db954'
+                - value: 800
+                  color: '#bf9540'
+                   
+              - type: custom:bar-card
+                title: Switches
+                entity: sensor.switch_count
+                title_position: inside
+                align: center 
+                padding: 4px
+                card_style: 
+                  border-radius: 5px
+                max: 65
+                severity:
+                - value: 1
+                  color: '#bf4040'
+                - value: 64
+                  color: '#1db954'
+                - value: 70
+                  color: '#bf9540'           
+
+  - type: vertical-stack
+    cards:    
+
+    - type: iframe
+      url: https://home.waaromzomoeilijk.nl:8123/local/freenas/smart.txt
+      title: FreeNAS SMART
+      aspect_ratio: 65%
+
+    - type: iframe
+      url: https://home.waaromzomoeilijk.nl:8123/local/freenas/zpool.txt
+      title: FreeNAS Zpool
+      aspect_ratio: 35%
+
+
+      

@@ -1,0 +1,3 @@
+rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A121JCH4-if00-port0
+  debug: true

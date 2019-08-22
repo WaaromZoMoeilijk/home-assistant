@@ -1,0 +1,17 @@
+platform: ping
+count: 1
+scan_interval: 30
+new_device_defaults:
+  track_new_devices: true
+hosts:
+  laptop: !secret laptop_host
+  steam: !secret steam_host
+  alarm_rpi: !secret pitft_host
+  ezrasapple_watch: !secret watch_host
+  salora: !secret salora_host
+  octoprint: !secret octoprint_host
+  printer: !secret printer_host
+  playstation: !secret playstation_host
+  steamlink: !secret steam_link_host  
+  freenas: !secret freenas_host
+  windows: !secret windows_host

@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Fridge Total Consumption"
+state_topic: "tele/fridge/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Total"] }}'
+unit_of_measurement: "kWh"

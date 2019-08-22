@@ -1,0 +1,24 @@
+themes:
+  name: Themes
+  options:
+    - default
+    - amoled
+    - christmas
+    - dark_cyan
+    - dark_orange
+    - dark_red
+    - dark
+    - halloween
+    - material_dark_green
+    - material_dark_red
+    - midnight
+    - night
+    - solarized_light
+    - sublimination
+    - teal
+    - vintage
+    - sunset
+  initial: default
+  icon: mdi:theme-light-dark
+
+        

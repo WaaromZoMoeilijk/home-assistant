@@ -1,0 +1,6 @@
+platform: template
+sensors:
+  daily_energy_production:
+    friendly_name: "Daily Energy Production"
+    value_template:  '{{ ((states.sensor.daily_power_production_offpeak.state | float) + (states.sensor.daily_power_production_peak.state | float)) | round(3) }}'
+    unit_of_measurement: 'kWh'

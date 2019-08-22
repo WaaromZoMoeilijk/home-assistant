@@ -1,0 +1,17 @@
+monthly_power_offpeak:
+  source: sensor.power_consumption_low
+  cycle: monthly
+  net_consumption: true
+monthly_power_peak:
+  source: sensor.power_consumption_normal
+  cycle: monthly
+  net_consumption: true
+monthly_gas:
+  source: sensor.gas_consumption
+  cycle: monthly
+monthly_power_production_offpeak:
+  source: sensor.power_production_low
+  cycle: monthly
+monthly_power_production_peak:
+  source: sensor.power_production_normal
+  cycle: monthly

@@ -1,0 +1,374 @@
+title: Home
+icon: mdi:home-assistant
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:    
+      - type: custom:alarm_control_panel-card
+        title: Alarm
+        entity: alarm_control_panel.house
+        show_keypad: true
+        display_letters: true
+
+      - type: glance
+        entities:
+          - entity: group.switch_off_devices_all
+            name: All devices
+            icon: mdi:lightbulb-on-outline
+            tap_action:
+              action: toggle
+          - entity: alarm_control_panel.alexa_guard_6fd20
+            icon: mdi:shield-check-outline
+            name: Alexa Guard          
+          
+  - type: vertical-stack
+    cards:
+      - type: custom:power-wheel-card
+        title_power: "Power distribution"
+        title_energy: "Energy distribution"
+        title_money: "Energy costs/savings"
+        solar_energy_entity: sensor.victron_pv_energy
+        solar_power_entity: sensor.pv_power_production
+        grid_power_consumption_entity: sensor.grid_power_consumption
+        grid_power_production_entity: sensor.grid_power_production
+        grid_energy_consumption_entity: sensor.daily_energy_consumption
+        grid_energy_production_entity: sensor.daily_energy_production
+        energy_consumption_rate: 0.22
+        energy_production_rate: 0.20
+        money_unit: "€"
+        solar_icon: "mdi:white-balance-sunny"
+        grid_icon: "mdi:transmission-tower"
+        home_icon: "mdi:home-assistant"
+        power_decimals: 3
+        energy_decimals: 3
+        money_decimals: 2
+        color_icons: true
+        consuming_color: "#dd5500"
+        producing_color: "#33ff33"
+        initial_auto_toggle_view: false
+
+      - type: custom:vertical-stack-in-card
+        cards:     
+          - type: conditional
+            conditions:
+              - entity: sensor.victron_battery_soc
+                state_not: '100.0'
+            card:
+              type: custom:bar-card
+              title_position: inside
+              entity: sensor.victron_battery_soc
+              title: Victron SOC
+              align: center
+              padding: 5px
+              max: 100
+              card_style: 
+                border-radius: 5px
+
+          - type: conditional
+            conditions:
+              - entity: sensor.victron_state
+                state: 'Discharging'
+            card:
+              type: entities
+              entities:
+                - sensor.victron_battery_time_to_go
+
+  - type: thermostat
+    entity: climate.liric
+    name: Thermostat
+
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: entities
+        title: Fasting Counter
+        show_header_toggle: false
+        entities:
+          - entity: input_boolean.fasting
+            type: custom:secondaryinfo-entity-row
+            secondary_info: "Fasted: [[ sensor.fasting_template ]]"                
+
+  - type: vertical-stack
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: custom:monster-card
+            card:
+              type: glance
+            filter:
+              include:
+                - entity_id: "device_tracker*"
+                  state: 'home'
+                - entity_id: person.ezra
+                  state: 'home'
+                - entity_id: !secret sensor_steam
+                  state: 'online'
+                - entity_id: sensor.postnl
+                - entity_id: sensor.plex                
+              exclude:
+                - entity_id: device_tracker.geheimedienst
+                - entity_id: device_tracker.itble
+                - entity_id: device_tracker.kitchenble
+                - entity_id: device_tracker.alarmble
+                - entity_id: sensor.postnl
+                  state: '0'     
+                - entity_id: sensor.plex
+                  state: '0'                      
+
+          - type: conditional
+            conditions:
+              - entity: person.ezra
+                state_not: "work"
+              - entity: person.ezra
+                state_not: "home"   
+              - entity: person.ezra
+                state_not: "fanny"     
+            card:
+              type: entities
+              entities:
+                - sensor.ezra_location_formatted
+                - proximity.home
+
+          - type: custom:bar-card
+            title_position: inside
+            entity: sensor.ezra_occupancy_confidence_ble
+            title: BLE Ezra confidence
+            align: center
+            padding: 5px
+            max: 100
+            card_style: 
+              border-radius: 5px
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Uptime robot
+        filter:
+          include:
+            - entity_id: "binary_sensor.https*"
+              state: 'off'        
+            - entity_id: "binary_sensor.waxsalongp"        
+              state: 'off'        
+            - entity_id: "binary_sensor.remote_hass_cloud"        
+              state: 'off'                 
+
+      - type: custom:monster-card
+        show_empty: false
+        card:
+          type: glance
+          title: Low Battery Devices
+        filter:
+          include:
+            - entity_id: "*battery_level*"
+              state: '< 25'
+            - entity_id: sensor.ring_front_door_battery
+              state: '< 25'
+            - attributes:
+                battery: '< 25'
+            - attributes:
+                battery_level: '< 25'
+          exclude:
+            - entity_id: device_tracker.ezras_iphone
+
+      - type: vertical-stack
+        cards:    
+          - type: entities
+            show_header_toggle: off
+            entities:
+              - type: custom:vertical-stack-in-card
+                cards:
+                  - type: horizontal-stack
+                    cards:     
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: !secret ezra_gmail
+                        title: Ezra Gmail
+                        align: center
+                        padding: 5px
+                        max: 5
+                        card_style: 
+                          border-radius: 5px        
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: !secret fan_gmail
+                        title: Fanny Gmail
+                        align: center
+                        padding: 5px
+                        max: 5
+                        card_style: 
+                          border-radius: 5px 
+
+                  - type: horizontal-stack
+                    cards:     
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: !secret info_wzm 
+                        title: info@wzm.nl
+                        align: center
+                        padding: 5px
+                        max: 5
+                        card_style: 
+                          border-radius: 5px
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: !secret ezra_wzm 
+                        title: ezra@wzm.nl
+                        align: center
+                        padding: 5px
+                        max: 5
+                        card_style: 
+                          border-radius: 5px        
+
+                  - type: horizontal-stack
+                    cards:     
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: !secret ahgp
+                        title: AHGP
+                        align: center
+                        padding: 5px
+                        max: 5
+                        card_style: 
+                          border-radius: 5px 
+                      - type: custom:bar-card
+                        title_position: inside
+                        entity: !secret ihdb
+                        title: Ingenieurshuisdeblaey
+                        align: center
+                        padding: 5px
+                        max: 5
+                        card_style: 
+                          border-radius: 5px
+
+                  - type: custom:bar-card
+                    title_position: inside
+                    entity: !secret waxgp
+                    title: WaxsalonGP
+                    align: center
+                    padding: 5px
+                    max: 5
+                    card_style: 
+                      border-radius: 5px     
+                                              
+              - type: section
+              - type: custom:vertical-stack-in-card
+                cards:        
+                  - type: custom:bar-card
+                    title_position: inside
+                    entity: sensor.exchange_rate_1_btc
+                    title: Bitcoin
+                    align: center
+                    padding: 5px
+                    max: 15000
+                    card_style: 
+                      border-radius: 5px             
+
+  - type: custom:monster-card
+    card:
+      type: entities
+      title: Things that are broken
+      show_header_toggle: false
+    filter:
+      include:
+        - state: "unknown"
+        - state: "unavailable"
+      exclude:
+        - entity_id: "group.*"
+        - entity_id: "sensor.octoprint*"        
+        - entity_id: "cover.somfy_upstairs"
+        - entity_id: "cover.somfy_downstairs"
+        - entity_id: "sensor.dark*precip*" 
+        - entity_id: sensor.ring_front_door_last_ding         
+        - entity_id: "*BLE*" 
+        - entity_id: "media_player.laptop"   
+        - entity_id: "media_player.iphone"          
+        - entity_id: "media_player.desktop"
+                       
+  - type: entities
+    title: Alarm Clock
+    show_header_toggle: false    
+    entities:
+      - input_boolean.alarm_clock_status
+      - sensor.alarm_clock_time
+      - input_number.alarm_clock_hour
+      - input_number.alarm_clock_minute
+      - sensor.alarm_clock_snooze
+      - input_number.alarm_clock_snooze
+
+  - type: custom:weather-card
+    entity: weather.dark_sky
+    icons: "/local/community_plugin/weather-card/icons/"
+    current: true
+    details: true
+    forecast: true
+
+  - type: "custom:calendar-card"
+    name: "Calendar"
+    showProgressBar: true
+    numberOfDays: 7
+    entities:
+      - calendar.gedeeld_fanny
+      - calendar.personal
+
+  - type: shopping-list
+    title: To do list
+
+  - type: "custom:postnl-card"
+    delivery: sensor.postnl_delivery
+    #distribution: sensor.postnl_distribution
+    letters: sensor.postnl_letters
+    hide:
+      delivered: false
+      first_letter: false
+      header: false
+    date_format: "DD MMM YYYY"
+    time_format: "HH:mm"
+    past_days: 1
+
+  - type: entities
+    title: Media Players
+    show_header_toggle: false
+    entities:
+      - entity: media_player.spotify
+        type: custom:mini-media-player
+        group: true
+      - entity: media_player.sonos_beam_2
+        type: custom:mini-media-player
+        hide_controls: false
+        group: true
+      - entity: media_player.bedroom
+        name: Bedroom Echo
+        type: custom:mini-media-player
+        hide_controls: true
+        group: true
+      - entity: media_player.livingroom
+        name: First Floor Echo
+        type: custom:mini-media-player
+        hide_controls: true
+        group: true
+      - entity: media_player.it_room
+        name: IT Room Echo
+        type: custom:mini-media-player
+        hide_controls: true
+        group: true
+      - entity: media_player.kitchen
+        name: Kitchen Echo
+        type: custom:mini-media-player
+        hide_controls: true
+        group: true            
+      - entity: media_player.car
+        name: Datacenter
+        type: custom:mini-media-player
+        hide_controls: true
+        group: true            
+      - entity: media_player.woonkamer
+        name: Chromecast
+        type: custom:mini-media-player
+        hide_controls: false
+        group: true
+        
+  - type: entities
+    title: Theme
+    show_header_toggle: false
+    entities:
+      - input_select.themes

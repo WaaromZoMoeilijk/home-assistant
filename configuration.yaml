@@ -1,0 +1,36 @@
+homeassistant:
+  # Name of this Home Assistant instance
+  name: Home
+
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret home_el
+
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+
+  # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Amsterdam
+
+  # Needs to be here because of the file size component
+  whitelist_external_dirs:
+    - /config
+
+  # Needs to be here because it wont work in the homeassistant package
+  auth_providers:
+   - type: homeassistant
+  # - type: trusted_networks
+  #   trusted_networks:
+  #     - !secret pitft_host
+  # - type: legacy_api_password
+  #   api_password: !secret api_password
+
+  # Load packages
+  packages: !include_dir_named /config/components/packages
+
+# HACS
+hacs:
+  token: !secret my_github_access_token

@@ -1,0 +1,27 @@
+alias: '[Alarm] Pending Alexa'
+hide_entity: false
+initial_state: 'off'
+trigger:
+- platform: state
+  entity_id: alarm_control_panel.house
+  to: 'pending'
+action:
+  - service: media_player.alexa_tts
+    data:
+      entity_id:
+        - media_player.it_room
+        - media_player.bedroom
+        - media_player.livingroom
+        - media_player.kitchen
+        - media_player.matthews_sonos_beam
+      message: “Alarm pending, you have 30 seconds to leave the residence“
+  - delay: 00:00:10
+  - service: media_player.alexa_tts
+    data:
+      entity_id:
+        - media_player.it_room
+        - media_player.bedroom
+        - media_player.livingroom
+        - media_player.kitchen
+        - media_player.matthews_sonos_beam
+      message: “Alarm pending, you have 10 seconds to leave the residence“

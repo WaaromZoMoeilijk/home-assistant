@@ -1,0 +1,6 @@
+platform: wake_on_lan
+name: Desktop
+mac_address: !secret steam_mac
+host: !secret steam_host
+turn_off:
+  service: shell_command.steam_suspend

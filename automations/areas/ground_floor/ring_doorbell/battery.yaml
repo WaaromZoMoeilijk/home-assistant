@@ -1,0 +1,15 @@
+alias: "[Ring] Ring Battery Notification"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: numeric_state
+  entity_id: sensor.ring_front_door_battery
+  value_template: '{{ state.attributes.battery }}'
+  below: 25
+action:
+  - service: notify.telegram
+    data:
+      message: "[Ring] Doorbell Battery under 25%"
+  - service: notify.notify
+    data:
+      message: "[Ring] Doorbell Battery under 25%"

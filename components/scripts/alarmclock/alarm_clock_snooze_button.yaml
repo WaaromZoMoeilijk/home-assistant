@@ -1,0 +1,17 @@
+alarm_clock_snooze_button:
+  alias: 'Alarm Clock Snooze Button'
+  sequence:
+    - service: homeassistant.turn_off
+      data:
+        entity_id: light.bled
+    - service: script.turn_off
+      data_template:
+        entity_id: >-
+          {%- if states.binary_sensor.workday_sensor.state == 'on' -%}
+            script.morning_lights_weekday
+          {%- else -%}
+            script.morning_lights_weekend
+          {%- endif -%}
+    - service: script.turn_on
+      data:
+        entity_id: script.alarm_clock_snooze_timer

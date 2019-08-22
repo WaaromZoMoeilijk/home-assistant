@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Fridge Current"
+state_topic: "tele/fridge/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Current"] }}'
+unit_of_measurement: "A"

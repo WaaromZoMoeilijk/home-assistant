@@ -1,0 +1,8 @@
+browser_mod:
+  devices:
+    f4abd1fe_b0599048:
+      name: laptop
+    c345e7c8_5608123b:
+      name: iphone
+    ee95fd03_9bcf7f94:
+      name: desktop

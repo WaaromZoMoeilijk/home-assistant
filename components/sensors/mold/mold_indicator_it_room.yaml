@@ -1,0 +1,6 @@
+platform: mold_indicator
+name: Datacentre mold indicator
+indoor_temp_sensor: sensor.desk_si7021_temperature
+indoor_humidity_sensor: sensor.desk_si7021_humidity
+outdoor_temp_sensor: sensor.dark_sky_temperature
+calibration_factor: 1.5

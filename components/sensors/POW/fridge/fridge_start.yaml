@@ -1,0 +1,4 @@
+platform: mqtt
+name: "Fridge Total Start Time"
+state_topic: "tele/fridge/SENSOR"
+value_template: '{{ value_json["ENERGY"]["TotalStartTime"] }}'

@@ -1,0 +1,17 @@
+platform: template                                                                                                                                   
+sensors:                                                                                                                                             
+  alexa_guard_status:                                                                                                                                     
+    friendly_name: "Alexa Guard"                                                                                                                                                                                                                                         
+    value_template: "{{states.alarm_control_panel.alexa_guard_6fd20.state}}"                                                                          
+    icon_template: >                                                                                                                                                                                                                                                      
+      {% if states.alarm_control_panel.alexa_guard_6fd20.state %}                                                                                     
+        {% if states.alarm_control_panel.alexa_guard_6fd20.states == armed_away %}                                                                             
+          mdi:shield-lock                                                                                                                               
+        {% elif states.alarm_control_panel.alexa_guard_6fd20.states == armed_home %}                                                                             
+          mdi:shield-off    
+        {% elif states.alarm_control_panel.alexa_guard_6fd20.states == disarmed %}                                                                             
+          mdi:shield-off                                                                                                                                         
+        {% elif states.alarm_control_panel.alexa_guard_6fd20.states == triggered %}                                                                                                                                  
+          mdi:alarm-light                                                                                                                        
+        {% endif %}                                                                                                                                  
+      {% endif %}

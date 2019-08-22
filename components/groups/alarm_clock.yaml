@@ -1,0 +1,12 @@
+alarm_clock:
+  name: Alarm Clock
+  icon: mdi:alarm
+  entities:
+    - input_boolean.alarm_clock_status
+    - sensor.alarm_clock_time
+    - input_number.alarm_clock_hour
+    - input_number.alarm_clock_minute
+    - sensor.alarm_clock_snooze
+    - input_number.alarm_clock_snooze
+    - sensor.morning_lights_fadein
+    - input_number.morning_lights_fadein

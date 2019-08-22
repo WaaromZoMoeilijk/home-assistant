@@ -1,0 +1,11 @@
+alias: "[Curtain] Ezra boolean off"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: state
+  entity_id: input_boolean.curtain_ezra
+  from: 'on'
+  to: 'off'
+action:
+  service: cover.open_cover
+  entity_id: cover.curtain_mbr

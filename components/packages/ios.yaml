@@ -1,0 +1,49 @@
+# The Home Assistant for iOS app offers a companion app for iOS which
+# is deeply integrated into both Home Assistant and iOS.
+#
+# https://www.home-assistant.io/components/ios/
+# https://www.home-assistant.io/docs/ecosystem/ios/
+#
+ios:
+  push:
+    categories:
+      - name: Alarm
+        identifier: 'alarm'
+        actions:
+          - identifier: 'SOUND_ALARM'
+            title: 'Sound Alarm'
+            activationMode: 'foreground'
+            authenticationRequired: no
+            destructive: yes
+            behavior: 'default'
+
+          - identifier: 'SILENCE_ALARM'
+            title: 'Silence Alarm'
+            activationMode: 'foreground'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default'
+
+          - identifier: 'ARM_ALARM'
+            title: 'Arm Alarm'
+            activationMode: 'foreground'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default'
+
+          - identifier: 'DISARM_ALARM'
+            title: 'Disarm Alarm'
+            activationMode: 'foreground'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default'
+
+      - name: alarm clock
+        identifier: 'alarmclock'
+        actions:
+          - identifier: 'AWAKE'
+            title: 'Awake'
+            destructive: no
+          - identifier: 'SNOOZE'
+            title: 'Snooze'
+            destructive: yes 

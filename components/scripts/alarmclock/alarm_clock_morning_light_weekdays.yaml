@@ -1,0 +1,18 @@
+morning_lights_weekday:
+  alias: 'Morning Lights Weekday'
+  sequence:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alarm_clock_status
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.house
+      data:
+        code: !secret alarm
+    - service: homeassistant.turn_on
+      data:
+        entity_id: light.bled
+    - service: input_boolean.turn_off
+      data_template:
+        entity_id: >-
+          {%- if states.input_boolean.curtain_ezra == 'on' -%}
+            input_boolean.curtain.ezra
+          {%- endif -%}

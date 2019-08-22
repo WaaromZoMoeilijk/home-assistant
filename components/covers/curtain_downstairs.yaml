@@ -1,0 +1,30 @@
+platform: template
+covers:
+  curtain_downstairs:
+    friendly_name: "Curtain Downstairs"
+    open_cover:
+      - service: mqtt.publish
+        data:
+          topic: "backcurtain/cmnd/backlog"
+          payload: "dimmer 10; delay 190; dimmer 0"
+          qos: 2
+      - service: mqtt.publish
+        data:
+          topic: "frontcurtain/cmnd/backlog"
+          payload: "dimmer 20; delay 170; dimmer 0"
+          qos: 2
+      - service: homeassistant.turn_off
+        entity_id: input_boolean.curtain_downstairs
+    close_cover:
+      - service: mqtt.publish
+        data:
+          topic: "backcurtain/cmnd/backlog"
+          payload: "dimmer 20; delay 170; dimmer 0"
+          qos: 2
+      - service: mqtt.publish
+        data:
+          topic: "frontcurtain/cmnd/backlog"
+          payload: "dimmer 10; delay 130; dimmer 0"
+          qos: 2
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.curtain_downstairs

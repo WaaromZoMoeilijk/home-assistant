@@ -1,0 +1,14 @@
+alias: '[Alarm] Armed Away Notify'
+hide_entity: false
+initial_state: 'off'
+trigger:
+- platform: state
+  entity_id: alarm_control_panel.house
+  to: 'armed_away'
+action:
+  - service: notify.notify
+    data:
+      message: "[Alarm] Armed away"
+  - service: notify.telegram
+    data:
+      message: "[Alarm] Armed away"

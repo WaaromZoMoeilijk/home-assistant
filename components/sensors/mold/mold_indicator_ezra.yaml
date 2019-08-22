@@ -1,0 +1,6 @@
+platform: mold_indicator
+name: Ezra mold indicator
+indoor_temp_sensor: sensor.bedroom_light_dht11_temperature
+indoor_humidity_sensor: sensor.bedroom_light_dht11_humidity
+outdoor_temp_sensor: sensor.dark_sky_temperature
+calibration_factor: 1.5
