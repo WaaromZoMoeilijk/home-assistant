@@ -323,7 +323,7 @@ cards:
       header: false
     date_format: "DD MMM YYYY"
     time_format: "HH:mm"
-    past_days: 1
+    past_days: 0
 
   - type: entities
     title: Media Players
@@ -332,6 +332,10 @@ cards:
       - entity: media_player.spotify
         type: custom:mini-media-player
         group: true
+        artwork: cover        
+        power_color: true
+        hide_volume: false
+        show_progress: true             
       - entity: media_player.sonos_beam_2
         type: custom:mini-media-player
         hide_controls: false
