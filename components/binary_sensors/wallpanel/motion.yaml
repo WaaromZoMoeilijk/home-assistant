@@ -1,0 +1,6 @@
+platform: mqtt
+state_topic: "wallpanel/tab2/sensor/motion"
+name: "Wallpanel Motion"
+payload_on: '{"value":true}'
+payload_off: '{"value":false}'
+device_class: motion 

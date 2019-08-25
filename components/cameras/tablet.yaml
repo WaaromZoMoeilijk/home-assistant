@@ -1,0 +1,3 @@
+platform: mjpeg
+mjpeg_url: !secret tab2_cam
+name: WallPanel Camera

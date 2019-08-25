@@ -3,7 +3,6 @@ icon: mdi:playlist-check
 cards:
   - type: vertical-stack
     cards:
-
       - type: custom:monster-card
         show_empty: false
         card:
@@ -15,7 +14,6 @@ cards:
               state: 'on'
             - entity_id: binary_sensor.vacation
               state: 'on'
-
       - type: custom:monster-card
         card:
           type: entities
@@ -49,7 +47,7 @@ cards:
 
   - type: "custom:tiles-card"
     card_settings:
-      title: Night Light
+      title: Bathroom LED
       background: var(--paper-card-background-color)
     global_settings:
       background: var(--paper-card-background-color)
@@ -95,4 +93,8 @@ cards:
     show_header_toggle: false
     entities:
       - sensor.season
-
+      - binary_sensor.wallpanel_motion
+      - binary_sensor.wallpanel_face_detection
+      - sensor.wallpanel_battery_level
+      - sensor.wallpanel_light_level
+      - sensor.wallpanel_magnetic_field

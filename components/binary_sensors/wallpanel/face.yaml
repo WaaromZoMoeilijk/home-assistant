@@ -1,0 +1,6 @@
+platform: mqtt
+state_topic: "wallpanel/tab2/sensor/face"
+name: "Wallpanel Face Detection"
+payload_on: '{"value":true}'
+payload_off: '{"value":false}'
+device_class: motion

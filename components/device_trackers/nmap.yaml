@@ -19,3 +19,4 @@ hosts:
   - !secret steam_link_host  
   - !secret freenas_host
   - !secret windows_host
+  - !secret rpi_zero_kitchen

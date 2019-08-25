@@ -35,20 +35,10 @@ condition:
   value_template: '{{ state.attributes.elevation }}'
   below: 4
 action:
-- service: mqtt.publish
-  data:
-    topic: "cmnd/nightlight/Dimmer"
-    payload: "5"
-    qos: 1
-- service: mqtt.publish
-  data:
-    topic: "cmnd/nightlight/Color2"
-    payload: "#0000FF"
-    qos: 1
 - service: homeassistant.turn_on
   data:
     entity_id:
-      - light.night_light_3
+      - light.night_light_2
 - service: timer.cancel
   data:
     entity_id: timer.nightlight

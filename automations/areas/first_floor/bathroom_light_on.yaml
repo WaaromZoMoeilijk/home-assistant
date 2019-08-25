@@ -16,7 +16,7 @@ condition:
 action:
 - service: homeassistant.turn_on
   data:
-    entity_id: light.bathroom
+    entity_id: light.night_old
 - service: timer.cancel
   data:
     entity_id: timer.bathroom

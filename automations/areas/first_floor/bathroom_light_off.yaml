@@ -10,4 +10,4 @@ action:
 - service: homeassistant.turn_off
   data:
     entity_id:
-      - light.bathroom
+      - light.night_old

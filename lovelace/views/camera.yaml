@@ -1,17 +1,6 @@
 title: Camera
 icon: mdi:cctv
 cards:
-  - type: custom:surveillance-card
-    thumb_interval: 2
-    update_interval: 0.5
-    cameras:
-      - entity: camera.front_door
-        motion_entity: binary_sensor.front_door_motion
-      - entity: camera.back_yard
-        motion_entity: binary_sensor.ring_front_door_motion
-      - entity: camera.kitchen
-        motion_entity: binary_sensor.kitchen_motion
-
   - type: custom:vertical-stack-in-card
     cards:     
       - type: picture-glance
@@ -35,3 +24,12 @@ cards:
         show_info: true
         tap_action: dialog
         camera_view: live
+
+      - type: picture-entity
+        title: WallPanel
+        entity: camera.wallpanel_camera
+        camera_image: camera.wallpanel_camera camera.wallpanel_camera
+        show_info: true
+        tap_action: dialog
+        camera_view: live
+

@@ -4,7 +4,7 @@
 #
 frontend:
   # Version of the JavaScript to serve to clients.
-  javascript_version: latest
+  javascript_version: auto
 
   # List of additional resources to load (latest javascript)
   extra_html_url: []

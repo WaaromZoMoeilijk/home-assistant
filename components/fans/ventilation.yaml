@@ -2,10 +2,10 @@ platform: template
 fans:
   ventilation:
     friendly_name: "Ventilation"
-    value_template: "{{ states('switch.ventilation_2') }}"
+    value_template: "{{ states('switch.ventilation') }}"
     turn_on:
       service: homeassistant.turn_on
-      entity_id: switch.ventilation_2
+      entity_id: switch.ventilation
     turn_off:
       service: homeassistant.turn_off
-      entity_id: switch.ventilation_2
+      entity_id: switch.ventilation

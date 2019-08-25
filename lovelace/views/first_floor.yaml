@@ -20,6 +20,7 @@ cards:
           - type: 'custom:button-entity-row'
             buttons:
               - entity: scene.bedroom_day
+
               - entity: scene.bedroom_day
                 icon: 'mdi:brightness-5'
                 style:
@@ -28,6 +29,7 @@ cards:
                 icon: 'mdi:brightness-3'
                 style:
                   - color: red
+
               - entity: scene.bedroom_day             
           - type: switch
             entity: input_boolean.curtain_ezra
@@ -119,6 +121,8 @@ cards:
 
           - type: light
             entity: light.bathroom
+          - type: light
+            entity: light.night_old
           - type: sensor
             entity: binary_sensor.bathroom_door
           - type: sensor
@@ -130,7 +134,7 @@ cards:
             label: First floor
 
           - type: custom:slider-entity-row
-            entity: light.night_light_3
+            entity: light.night_light_2
             toggle: true
           - type: light
             entity: light.first_floor

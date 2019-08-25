@@ -128,6 +128,19 @@ cards:
                 - proximity.home
 
           - type: custom:bar-card
+            align: split
+            show_icon: true
+            padding: 4px
+            columns: 2
+            card_style: 
+              border-radius: 5px
+            entities:
+              - entity: sensor.ground_floor_ble_rssi
+                title: Alarm RSSI
+              - entity: sensor.kitchen_ble_rssi
+                title: Kitchen RSSI
+
+          - type: custom:bar-card
             title_position: inside
             entity: sensor.ezra_occupancy_confidence_ble
             title: BLE Ezra confidence

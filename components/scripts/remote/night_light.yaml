@@ -3,7 +3,7 @@ night_light_brightness_up:
   sequence:
     - service: mqtt.publish
       data:
-        topic: "cmnd/nightlight/Irsend"
+        topic: "bathroomled/cmnd/Irsend"
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF700FF"}'
         qos: 2
 
@@ -12,7 +12,7 @@ night_light_brightness_down:
   sequence:
     - service: mqtt.publish
       data:
-        topic: "cmnd/nightlight/Irsend"
+        topic: "bathroomled/cmnd/Irsend"
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF7807F"}'
         qos: 2
 
@@ -21,7 +21,7 @@ night_light_white_toggle:
   sequence:
     - service: mqtt.publish
       data:
-        topic: "cmnd/nightlight/Irsend"
+        topic: "bathroomled/cmnd/Irsend"
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF740BF"}'
         qos: 2
 
@@ -30,7 +30,7 @@ night_light_color_set:
   sequence:
     - service: mqtt.publish
       data:
-        topic: "cmnd/nightlight/Irsend"
+        topic: "bathroomled/cmnd/Irsend"
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF710EF"}'
         qos: 2
 
@@ -39,6 +39,6 @@ night_light_alarm:
   sequence:
     - service: mqtt.publish
       data:
-        topic: "cmnd/nightlight/Irsend"
+        topic: "bathroomled/cmnd/Irsend"
         payload: '{"Protocol":"NEC","Bits":32,"Data":"0xF7C837"}'
         qos: 2

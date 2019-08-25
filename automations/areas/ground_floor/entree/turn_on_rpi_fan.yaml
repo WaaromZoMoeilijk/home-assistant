@@ -2,7 +2,7 @@ alias: "[RPI] Turn on FAN above 48 degree"
 initial_state: 'on'
 trigger:
 - platform: numeric_state
-  entity_id: sensor.pitft_temperature
+  entity_id: sensor.alarmtemperature
   above: '48'
 condition:
   - condition: state

@@ -3,4 +3,4 @@ entities:
   light.bled:
     state: true
     xy_color: [0.323, 0.329]
-    brightness: 255    
+    brightness: 255

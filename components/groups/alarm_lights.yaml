@@ -3,7 +3,7 @@ alarm_lights:
   entities:
     - light.bathroom
     - light.bedroom_bled
-    - light.bedroomb1
+    - light.victron_light
     - light.bled
     - light.closet
     - light.desk_light
@@ -16,7 +16,7 @@ alarm_lights:
     - light.kitchen
     - light.livingroom_led
     - light.livingroom_sw
-    - light.night_light_3
+    - light.night_light_2
     - light.nowen
     - light.nowen_main
     - light.second_hall
