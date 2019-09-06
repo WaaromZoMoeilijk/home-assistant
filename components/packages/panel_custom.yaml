@@ -7,4 +7,4 @@
 #
 # https://www.home-assistant.io/components/panel_iframe/
 #
-panel_custom: !include_dir_merge_named /config/components/panels/custom
+#panel_custom: !include_dir_merge_named /config/components/panels/custom

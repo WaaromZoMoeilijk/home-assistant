@@ -1,0 +1,14 @@
+platform: afvalbeheer
+wastecollector: ZRD
+resources:
+  - restafval
+  - gft
+  - papier
+postcode: !secret postal_code
+streetnumber: !secret house_number
+upcomingsensor: 1     
+dateformat: '%d-%m-%Y'
+dateonly: 1           
+nameprefix: 0
+builtinicons: 1       
+dutch: 0

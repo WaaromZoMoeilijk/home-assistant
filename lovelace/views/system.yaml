@@ -324,6 +324,10 @@ cards:
             - entity_id: "sensor.kitchenrpizeropowerstatus"      
               state: 'Everything is working as intended'
 
+  - type: custom:github-card
+    entities:
+      - sensor.home_assistant
+
   - type: custom:search-card
     max_results: 10
 

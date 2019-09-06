@@ -17,20 +17,24 @@ cards:
           - type: custom:slider-entity-row
             entity: light.bled
             toggle: true
+
           - type: 'custom:button-entity-row'
             buttons:
               - entity: scene.bedroom_day
+                icon: 'mdi:raspberrypi'
 
               - entity: scene.bedroom_day
                 icon: 'mdi:brightness-5'
                 style:
-                  - color: white
+                  - color: yellow
               - entity: scene.bedroom_night
                 icon: 'mdi:brightness-3'
                 style:
                   - color: red
 
-              - entity: scene.bedroom_day             
+              - entity: scene.bedroom_day
+                icon: 'mdi:raspberrypi'
+            
           - type: switch
             entity: input_boolean.curtain_ezra
           - type: sensor

@@ -14,14 +14,6 @@ cards:
               state: 'on'
             - entity_id: binary_sensor.vacation
               state: 'on'
-      - type: custom:monster-card
-        card:
-          type: entities
-          title: ZRD
-          show_header_toggle: false
-        filter:
-          include:
-            - entity_id: "sensor.afvalkalender_event*"
 
   - type: entities
     entities:

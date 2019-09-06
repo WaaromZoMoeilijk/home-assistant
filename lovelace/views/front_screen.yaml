@@ -102,7 +102,9 @@ cards:
                 - entity_id: !secret sensor_steam
                   state: 'online'
                 - entity_id: sensor.postnl
-                - entity_id: sensor.plex                
+                - entity_id: sensor.plex      
+                - entity_id: "sensor.zrd_vandaag"      
+                - entity_id: "sensor.zrd_morgen" 
               exclude:
                 - entity_id: device_tracker.geheimedienst
                 - entity_id: device_tracker.itble
@@ -111,7 +113,11 @@ cards:
                 - entity_id: sensor.postnl
                   state: '0'     
                 - entity_id: sensor.plex
-                  state: '0'                      
+                  state: '0'     
+                - entity_id: "sensor.zrd_morgen"        
+                  state: 'None'              
+                - entity_id: "sensor.zrd_vandaag"        
+                  state: 'None'                                            
 
           - type: conditional
             conditions:
@@ -315,6 +321,17 @@ cards:
     details: true
     forecast: true
 
+  - type: custom:monster-card
+    card:
+      type: entities
+      title: Waste Collection
+      show_header_toggle: false
+    filter:
+      include: 
+        - entity_id: "sensor.gft"      
+        - entity_id: "sensor.restafval"
+        - entity_id: "sensor.papier"                      
+
   - type: "custom:calendar-card"
     name: "Calendar"
     showProgressBar: true
@@ -383,9 +400,11 @@ cards:
         type: custom:mini-media-player
         hide_controls: false
         group: true
+        artwork: cover
         
   - type: entities
     title: Theme
     show_header_toggle: false
     entities:
       - input_select.themes
+

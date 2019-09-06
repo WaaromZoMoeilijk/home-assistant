@@ -10,7 +10,8 @@ action:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
       password: !secret hassio_backup_pass
   - delay: 02:00:00
-  - service: shell_command.delete_old_snapshots
+#  - service: shell_command.delete_old_snapshots
+  - service: clean_up_snapshots_service.clean_up
   - delay: 00:00:30
   - service: shell_command.snapshot_reload
  

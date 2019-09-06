@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Sink Boiler Energy"
+state_topic: "tele/fridge/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Today"] }}'
+unit_of_measurement: "kWh"

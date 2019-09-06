@@ -89,6 +89,7 @@ alarm_control_panel.yaml
 emulated_hue_ids.json
 emergency.yaml
 core.entity_registry
+.pip_progress
 
 # Extensions
 *.db

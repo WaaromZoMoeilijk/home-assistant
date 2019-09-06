@@ -132,7 +132,6 @@ cards:
       - type: custom:mini-media-player
         entity: media_player.sonos_beam_2
         name: Sonos
-        artwork: cover
         power_color: true
         hide_volume: false
         show_progress: true
@@ -148,7 +147,6 @@ cards:
       - type: custom:mini-media-player
         entity: media_player.kitchen
         name: Kitchen Echo
-        artwork: cover
         power_color: true
         hide_volume: false
         show_progress: true

@@ -1,8 +1,8 @@
 browser_mod:
   devices:
-    f4abd1fe_b0599048:
+    f4abd1fe-b0599048:
       name: laptop
-    c345e7c8_5608123b:
+    fceab483-d8232ffe:
       name: iphone
-    ee95fd03_9bcf7f94:
+    ee95fd03-9bcf7f94:
       name: desktop

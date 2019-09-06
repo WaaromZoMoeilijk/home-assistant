@@ -4,3 +4,4 @@ entities:
     state: true
     xy_color: [0.323, 0.329]
     brightness: 255
+    white_value: 255

@@ -1,0 +1,11 @@
+alias: "[Test] Webhook"
+hide_entity: false
+initial_state: 'on'
+trigger:
+  platform: webhook
+  webhook_id: kitchen_motion
+action:
+  - service: notify.telegram
+    data:
+      message: "[Test] Webhook"
+

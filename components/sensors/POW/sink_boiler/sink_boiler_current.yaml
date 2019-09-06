@@ -1,0 +1,5 @@
+platform: mqtt
+name: "Sink Boiler Current"
+state_topic: "tele/sinkboiler/SENSOR"
+value_template: '{{ value_json["ENERGY"]["Current"] }}'
+unit_of_measurement: "A"

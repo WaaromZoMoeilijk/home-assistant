@@ -1,0 +1,4 @@
+clean_up_snapshots_service:
+  host: !secret HA_url
+  token: !secret HA_long_token
+  number_of_snapshots_to_keep: 7

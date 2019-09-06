@@ -198,6 +198,18 @@ cards:
           - type: custom:fold-entity-row
             head:
               type: section
+              label: Sink Boiler
+            items:
+              - sensor.sink_boiler_power
+              - sensor.sink_boiler_energy
+              - sensor.sink_boiler_current
+              - sensor.sink_boiler_voltage
+              - sensor.sink_boiler_total_consumption
+              - sensor.sink_boiler_total_start_time
+
+          - type: custom:fold-entity-row
+            head:
+              type: section
               label: Central Heating
             items:
               - sensor.central_heating_power
@@ -281,6 +293,7 @@ cards:
         - sensor.fridge_power
         - sensor.central_heating_power
         - sensor.washer_and_dryer_power
+        - sensor.sink_boiler_power
       show:
         graph: bar
 

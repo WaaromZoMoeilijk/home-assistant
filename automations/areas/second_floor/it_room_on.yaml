@@ -22,6 +22,19 @@ action:
   - service: timer.start
     data:
       entity_id: timer.it
+
+
+
+
+
+  - condition: state
+    entity_id: device_tracker.steam
+    state: 'not_home'     
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - switch.desk
+
   - condition: state
     entity_id: input_boolean.pioneer  
     state: 'off'        

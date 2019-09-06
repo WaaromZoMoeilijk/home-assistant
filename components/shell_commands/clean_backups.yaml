@@ -1,2 +1,1 @@
-delete_old_snapshots: find /backup/* -mtime +7 -exec rm {} \;
-snapshot_reload: hassio snapshots reload
+delete_old_snapshots: /usr/bin/find /backup/ -mtime +7 -exec rm {} \;

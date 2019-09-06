@@ -1,0 +1,11 @@
+alias: '[Washer & dryer] Notify on start'
+initial_state: 'on'
+trigger:
+  platform: numeric_state
+  entity_id: sensor.washer_and_dryer_power
+  above: 5
+  for:
+    minutes: 1
+action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.washer_dryer

@@ -1,0 +1,2 @@
+kitchen_cam_motion_start: !secret kitchen_cam_motion_start
+kitchen_cam_motion_pause: !secret kitchen_cam_motion_pause

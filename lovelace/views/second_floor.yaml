@@ -44,6 +44,8 @@ cards:
       - type: section
         label: Sensors
 
+      - type: switch
+        entity: input_boolean.washer_dryer
       - type: Sensor
         entity: binary_sensor.washer_leak
       - type: Sensor

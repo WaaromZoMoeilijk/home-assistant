@@ -1,0 +1,4 @@
+washer_dryer:
+  name: Washer or Dryer
+  initial: off
+  icon: mdi:tumble-dryer
